@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>python에서 GIL을 사용하지 않는다면</title>
+    <link rel="stylesheet" href="/assets/built/screen.css?v=6f2ef9fcb8">
+
+    <link rel="canonical" href="http://localhost:2368/pythoneseo-gileul-sayonghaji-anhge-doendamyeon/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="midagedev blog">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="python에서 GIL을 사용하지 않는다면">
+    <meta property="og:description" content="If PEP 703 is accepted, Meta can commit three engineer-years to no-GIL CPython
+아래의 내용은 위 글을 보고 chatgpt와의 대화를 정리한 것입니다.
+
+
+GIL이란?
+
+
+Python의 GIL이란 Global Interpreter Lock의 약자로, 한 번에 하나의 스레드만 Python 바이트코드를 실행하도록 제한하는 메커니즘이다.
+
+
+이는 Python 인터프리터가 멀티스레드 환경에서 동시에 실행되는 스레드 간에 데이터를 안전하게 처리하도록">
+    <meta property="og:url" content="http://localhost:2368/pythoneseo-gileul-sayonghaji-anhge-doendamyeon/">
+    <meta property="article:published_time" content="2023-07-14T14:26:32.000Z">
+    <meta property="article:modified_time" content="2023-07-14T14:30:09.000Z">
+    <meta property="article:publisher" content="https://www.facebook.com/ghost">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="python에서 GIL을 사용하지 않는다면">
+    <meta name="twitter:description" content="If PEP 703 is accepted, Meta can commit three engineer-years to no-GIL CPython
+아래의 내용은 위 글을 보고 chatgpt와의 대화를 정리한 것입니다.
+
+
+GIL이란?
+
+
+Python의 GIL이란 Global Interpreter Lock의 약자로, 한 번에 하나의 스레드만 Python 바이트코드를 실행하도록 제한하는 메커니즘이다.
+
+
+이는 Python 인터프리터가 멀티스레드 환경에서 동시에 실행되는 스레드 간에 데이터를 안전하게 처리하도록">
+    <meta name="twitter:url" content="http://localhost:2368/pythoneseo-gileul-sayonghaji-anhge-doendamyeon/">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="kim hyeoncheol">
+    <meta name="twitter:site" content="@ghost">
+    <meta name="twitter:creator" content="@narx17">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "midagedev blog",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/favicon.ico"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "kim hyeoncheol",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2023/07/--.jpg",
+            "width": 772,
+            "height": 714
+        },
+        "url": "http://localhost:2368/author/kim/",
+        "sameAs": [
+            "https://twitter.com/narx17"
+        ]
+    },
+    "headline": "python에서 GIL\b을 사용하지 않는다면",
+    "url": "http://localhost:2368/pythoneseo-gileul-sayonghaji-anhge-doendamyeon/",
+    "datePublished": "2023-07-14T14:26:32.000Z",
+    "dateModified": "2023-07-14T14:30:09.000Z",
+    "description": "If PEP 703 is accepted, Meta can commit three engineer-years to no-GIL CPython\n아래의 내용은 위 글을 보고 chatgpt와의 대화를 정리한 것입니다.\n\n\nGIL이란?\n\n\nPython의 GIL이란 Global Interpreter Lock의 약자로, 한 번에 하나의 스레드만 Python 바이트코드를 실행하도록 제한하는 메커니즘이다.\n\n\n이는 Python 인터프리터가 멀티스레드 환경에서 동시에 실행되는 스레드 간에 데이터를 안전하게 처리하도록 도와준다. 그러나 이로 인해 멀티코어 프로세서에서 Python의 멀티스레딩이 효과적으로 활용되지 못하는 단점이 있다.\n\nGIL은 CPython에서만 발견되며, Jython이나 IronPython과 같은 다른 Python 구현에서는 이러한 제한이 없다. 또한, 병렬 처리를 필요로 하는 작업의 경우 Python의 멀티프로세싱 모듈이나 써드파티 라이브러리를 사용하여 이 문제를 해결할 수 있다",
+    "mainEntityOfPage": "http://localhost:2368/pythoneseo-gileul-sayonghaji-anhge-doendamyeon/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.54">
+    <link rel="alternate" type="application/rss+xml" title="midagedev blog" href="http://localhost:2368/rss/">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="a3bcd90eef780e8e2967d52431" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="http://localhost:2368/" crossorigin="anonymous"></script>
+    
+    <link href="http://localhost:2368/webmentions/receive/" rel="webmention">
+    <script defer src="/public/cards.min.js?v=6f2ef9fcb8"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=6f2ef9fcb8">
+    <script defer src="/public/comment-counts.min.js?v=6f2ef9fcb8" data-ghost-comments-counts-api="http://localhost:2368/members/api/comments/counts/"></script><style>:root {--ghost-accent-color: #28821c;}</style>
+</head>
+
+<body class="post-template is-head-left-logo has-serif-title has-serif-body">
+<div class="gh-site">
+
+    <header id="gh-head" class="gh-head gh-outer">
+        <div class="gh-head-inner">
+            <div class="gh-head-brand">
+                <div class="gh-head-brand-wrapper">
+                    <a class="gh-head-logo" href="http://localhost:2368">
+                            midagedev blog
+                    </a>
+                </div>
+                <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+                <button class="gh-burger"></button>
+            </div>
+
+            <nav class="gh-head-menu">
+                <ul class="nav">
+    <li class="nav-home"><a href="http://localhost:2368/">Home</a></li>
+    <li class="nav-about"><a href="http://localhost:2368/about/">About</a></li>
+</ul>
+
+            </nav>
+
+            <div class="gh-head-actions">
+                        <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+            </div>
+        </div>
+    </header>
+
+    
+
+<main id="gh-main" class="gh-main">
+    <article class="gh-article post no-image">
+        <header class="gh-article-header gh-canvas">
+    <div class="gh-article-meta">
+        <time class="gh-article-date" datetime="2023-07-14">2023년 7월 14일</time>
+    </div>
+
+    <h1 class="gh-article-title">python에서 GIL을 사용하지 않는다면</h1>
+
+</header>
+
+
+<section class="gh-content gh-canvas">
+    <p><a href="https://discuss.python.org/t/a-fast-free-threading-python/27903/99?ref=localhost" rel="noreferrer">If PEP 703 is accepted, Meta can commit three engineer-years to no-GIL CPython</a><br>아래의 내용은 위 글을 보고 chatgpt와의 대화를 정리한 것입니다.</p><!--kg-card-begin: markdown--><h2 id="gil%EC%9D%B4%EB%9E%80">GIL이란?</h2>
+<p>Python의 GIL이란 Global Interpreter Lock의 약자로, 한 번에 하나의 스레드만 Python 바이트코드를 실행하도록 제한하는 메커니즘이다.</p>
+<p>이는 Python 인터프리터가 멀티스레드 환경에서 동시에 실행되는 스레드 간에 데이터를 안전하게 처리하도록 도와준다. 그러나 이로 인해 멀티코어 프로세서에서 Python의 멀티스레딩이 효과적으로 활용되지 못하는 단점이 있다.<br>
+GIL은 CPython에서만 발견되며, Jython이나 IronPython과 같은 다른 Python 구현에서는 이러한 제한이 없다. 또한, 병렬 처리를 필요로 하는 작업의 경우 Python의 멀티프로세싱 모듈이나 써드파티 라이브러리를 사용하여 이 문제를 해결할 수 있다.</p>
+<h2 id="gil%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%98%EC%A7%80-%EC%95%8A%EA%B2%8C-%EB%90%9C%EB%8B%A4%EB%A9%B4">GIL을 사용하지 않게 된다면?</h2>
+<p>GIL을 사용하지 않게 되면, 여러 스레드가 동시에 실행되면서 Python 객체에 접근할 수 있게 됩니다. 이는 멀티 코어 프로세서에서 병렬 작업을 가능하게 하므로, 이론적으로는 프로그램의 실행 속도를 향상시킬 수 있습니다.</p>
+<p>그러나 GIL이 없다면, 공유 데이터에 대한 동시 접근을 막기 위한 새로운 방법이 필요하게 됩니다. 즉, 스레드 안전성을 보장하기 위해 더 많은 동기화가 필요해질 수 있습니다. 이렇게 되면 복잡성이 증가하고, 잘못 관리된 경우 데이터의 일관성이 손상될 수 있습니다.</p>
+<p>또한, 동기화를 위한 오버헤드로 인해 실제로 성능 향상을 얻지 못하고, 오히려 성능이 저하될 수도 있습니다. 이는 특히 스레드간에 많은 공유 데이터가 있는 경우에 해당됩니다.</p>
+<p>따라서 GIL을 제거하는 것은 간단하지 않으며, 잠재적으로 많은 문제를 초래할 수 있습니다. 이런 이유로, Python 커뮤니티는 여러 번 GIL을 제거하려는 시도를 했지만 아직까지는 완전히 성공하지 못했습니다.</p>
+<h2 id="django%EC%97%90%EC%84%9C-gil%EC%9D%B4-%EC%97%86%EB%8A%94-python%EC%9D%84-%EC%93%B4%EB%8B%A4%EB%A9%B4-%EC%96%B4%EB%96%A4-%EC%9E%A5%EB%8B%A8%EC%A0%90%EC%9D%B4-%EC%9E%88%EC%9D%84%EA%B9%8C">django에서 GIL이 없는 python을 쓴다면 어떤 장단점이 있을까?</h2>
+<h3 id="%EC%9E%A5%EC%A0%90">장점:</h3>
+<ol>
+<li>
+<p><strong>병렬 처리 개선</strong>: GIL이 없는 경우, 멀티스레드 환경에서 각 스레드가 독립적으로 동시에 작업을 처리할 수 있습니다. 이로 인해 병렬 처리 성능이 향상될 수 있습니다.</p>
+</li>
+<li>
+<p><strong>CPU 활용도 증가</strong>: GIL이 없다면, 멀티 코어 프로세서의 모든 코어를 동시에 활용할 수 있습니다. 이는 CPU 리소스를 보다 효율적으로 사용할 수 있다는 것을 의미합니다.</p>
+</li>
+</ol>
+<h3 id="%EB%8B%A8%EC%A0%90">단점:</h3>
+<ol>
+<li>
+<p><strong>동기화 문제</strong>: GIL이 없는 환경에서는 스레드 간의 동기화를 보다 신중하게 처리해야 합니다. 공유된 데이터에 대한 동시 접근이 발생하면 데이터의 일관성이 손상될 수 있습니다.</p>
+</li>
+<li>
+<p><strong>성능 저하 가능성</strong>: 과도한 스레드 동기화로 인한 오버헤드가 발생하면, 오히려 성능 저하를 초래할 수 있습니다.</p>
+</li>
+<li>
+<p><strong>디버깅 어려움</strong>: 병렬 코드는 일반적으로 디버깅이 어렵습니다. 스레드 간의 상호작용이나 경쟁 조건 등으로 인해 발생하는 문제를 찾고 해결하는 것이 복잡할 수 있습니다.</p>
+</li>
+</ol>
+<p>따라서, Django에서 GIL이 없는 Python을 사용하려면 스레드 동기화와 관련된 복잡성을 잘 이해하고 관리할 줄 알아야 합니다. 또한, CPU 활용도와 병렬 처리 성능 향상이 실제로 필요한 경우에만 고려하는 것이 좋습니다.</p>
+<h2 id="django%EB%8A%94-%EC%A7%80%EA%B8%88-%EC%8A%A4%EB%A0%88%EB%93%9C%EB%A5%BC-%EC%96%B4%EB%96%A4-%EC%8B%9D%EC%9C%BC%EB%A1%9C-%EC%93%B0%EA%B3%A0-%EC%9E%88%EC%96%B4">django는 지금 스레드를 어떤 식으로 쓰고 있어?</h2>
+<p>Django는 요청을 처리하기 위해 스레드나 프로세스를 사용하는데, 그 방식은 웹 서버의 설정에 따라 달라집니다.</p>
+<p>Django는 기본적으로 동기적으로 동작합니다. 즉, 하나의 요청을 처리하는 동안 다른 요청은 대기하게 됩니다. 이런 동작 방식은 간단하고 직관적이지만, 요청이 많아질 경우 효율성이 떨어질 수 있습니다.</p>
+<p>그래서 실제 운영 환경에서는 여러 요청을 동시에 처리할 수 있도록 웹 서버를 설정합니다. 예를 들어, WSGI 서버인 Gunicorn을 사용하는 경우, 워커(worker)라는 개념을 통해 요청을 병렬로 처리할 수 있습니다. 워커는 별도의 프로세스나 스레드로 동작하며, 각 워커는 독립적으로 요청을 처리합니다. 이렇게 함으로써 Gunicorn은 여러 요청을 동시에 처리할 수 있습니다.</p>
+<p>Django 3.1 이상에서는 비동기 기능이 추가되어, ASGI(Application Server Gateway Interface)를 사용해 비동기 요청도 처리할 수 있습니다. 이를 사용하면, Django는 웹소켓과 같은 비동기 프로토콜을 지원하며, 비동기 뷰, 미들웨어, 테스트 클라이언트를 지원합니다.</p>
+<p>그러나 Python의 GIL 때문에, 싱글 프로세스 내에서의 멀티스레딩은 여전히 CPU-bound 작업에서는 병렬성을 제공하지 못합니다. 따라서 CPU 사용이 많은 작업을 수행하는 Django 애플리케이션의 경우, 여러 프로세스를 사용하는 것이 더 효율적일 수 있습니다.</p>
+<h2 id="gunicorn%EC%97%90%EC%84%9C-%EB%A9%80%ED%8B%B0%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%EA%B0%80-%EC%95%84%EB%8B%8C-%EB%A9%80%ED%8B%B0%EC%8A%A4%EB%A0%88%EB%93%9C-%EB%AA%A8%EB%93%9C%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EA%B2%83%EC%9D%B4-%EC%9D%B4%EC%A0%90">gunicorn에서 멀티프로세스가 아닌 멀티스레드 모드를 사용하는 것이 이점</h2>
+<p>Gunicorn에서 멀티스레드 모드를 사용하는 것이 이점이 될 수 있는 상황들이 있습니다. 멀티스레드와 멀티프로세스는 각각의 장단점을 가지고 있고, 그 선택은 애플리케이션의 특성과 요구사항에 따라 달라집니다.</p>
+<p>멀티스레드 모드의 주요 이점은 다음과 같습니다:</p>
+<ol>
+<li>
+<p><strong>메모리 효율성</strong>: 멀티스레드 모드에서는, 모든 스레드가 같은 메모리 공간을 공유하므로 메모리 사용량이 줄어듭니다. 반면에, 멀티프로세스 모드에서는 각 프로세스가 독립된 메모리 공간을 가지므로, 비슷한 작업을 수행하더라도 메모리 사용량이 늘어납니다.</p>
+</li>
+<li>
+<p><strong>컨텍스트 스위칭</strong>: 멀티스레드 모드에서 스레드 간의 컨텍스트 스위칭은 멀티프로세스 모드에서 프로세스 간의 컨텍스트 스위칭보다 오버헤드가 적습니다. 이는 스레드가 메모리를 공유하므로 컨텍스트 정보를 교환하는 데 비용이 덜 들기 때문입니다.</p>
+</li>
+</ol>
+<p>그러나 멀티스레드 모드에서는 Python의 GIL(Global Interpreter Lock)이 병목이 될 수 있습니다. 즉, 한 번에 하나의 스레드만이 실행될 수 있으므로 CPU-bound 작업에서는 멀티스레드가 병렬성을 제공하지 못할 수 있습니다.</p>
+<p>따라서 Gunicorn에서 멀티스레드 모드를 사용하는 것이 이점이 되는지는 애플리케이션의 특성과 환경에 따라 다릅니다. I/O-bound 작업이 많은 애플리케이션에서는 멀티스레드가 효과적일 수 있으며, 반대로 CPU-bound 작업이 많은 애플리케이션에서는 멀티프로세스가 더 나을 수 있습니다.</p>
+<h2 id="db%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A5%BC-%EC%8B%9C%EB%A6%AC%EC%96%BC%EB%9D%BC%EC%9D%B4%EC%A6%88-%ED%95%98%EB%8A%94-%EC%9D%BC%EC%9D%B4-%EB%8C%80%EB%B6%80%EB%B6%84%EC%9D%B4%EB%9D%BC%EB%A9%B4">DB데이터를 시리얼라이즈 하는 일이 대부분이라면</h2>
+<p>데이터베이스에서 데이터를 가져오는 작업은 대부분 I/O-bound 작업입니다. 즉, 이러한 작업은 CPU 연산보다는 네트워크나 디스크 I/O에 의해 성능이 결정됩니다. 따라서 이런 경우, 멀티스레드 모드가 더 적합할 수 있습니다.</p>
+<p>멀티스레드 모드에서는 스레드들이 메모리를 공유하기 때문에, 메모리 사용량이 더 적습니다. 그리고 스레드 간의 컨텍스트 스위칭 비용이 프로세스 간의 컨텍스트 스위칭 비용보다 적기 때문에, I/O-bound 작업에서는 더 효율적일 수 있습니다.</p>
+<p>하지만 멀티스레드 환경에서는 동시성 제어에 주의해야 합니다. 다수의 스레드가 동일한 데이터에 동시에 접근하는 경우, 데이터의 일관성을 유지하기 위한 동기화가 필요합니다. 이는 프로그래밍의 복잡성을 증가시키고, 잘못 관리되면 버그를 유발할 수 있습니다.</p>
+<p>따라서 이러한 요소들을 종합적으로 고려하여, 애플리케이션의 특성, 트래픽 패턴, 서버의 자원 등에 따라 가장 적합한 모드를 선택하는 것이 중요합니다.</p>
+<h2 id="%EC%8A%A4%EB%A0%88%EB%93%9C%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EC%A7%80-%EC%95%8A%EB%8A%94-%ED%8E%B8%EC%9D%B4-%EA%B0%9C%EB%B0%9C-%EB%82%9C%EC%9D%B4%EB%8F%84%EA%B0%80-%EB%82%AE%EB%8B%A4%EA%B3%A0-%ED%95%A0-%EC%88%98-%EC%9E%88%EC%9D%84%EA%B9%8C">스레드를 사용하지 않는 편이 개발 난이도가 낮다고 할 수 있을까?</h2>
+<p>예, 일반적으로 스레드를 사용하지 않는 동기 프로그래밍이 비동기나 멀티스레드 프로그래밍에 비해 개발 난이도가 낮습니다. 이는 다음과 같은 이유 때문입니다:</p>
+<ol>
+<li>
+<p><strong>복잡성 감소</strong>: 멀티스레드 프로그래밍에서는 스레드간의 상호작용 및 동기화 문제를 처리해야 합니다. 이런 문제는 복잡성을 높이며, 종종 버그를 발생시키는 원인이 됩니다.</p>
+</li>
+<li>
+<p><strong>디버깅 용이성</strong>: 동기 코드는 일반적으로 디버깅하기 쉽습니다. 코드의 흐름이 명확하고 예측 가능하기 때문에 문제를 찾고 해결하는 것이 더 간단합니다. 반면, 비동기나 멀티스레드 코드는 동시성 문제로 인해 디버깅이 더 어려울 수 있습니다.</p>
+</li>
+<li>
+<p><strong>코드 가독성</strong>: 동기 코드는 위에서 아래로 순차적으로 실행되므로, 가독성이 높고 이해하기 쉽습니다. 비동기나 멀티스레드 코드는 이벤트 루프, 콜백, 프로미스 등의 개념을 이해해야 하며, 코드 흐름을 추적하기 어려울 수 있습니다.</p>
+</li>
+</ol>
+<p>그러나 이러한 이점에도 불구하고, 대규모 서비스나 I/O 작업이 많은 애플리케이션에서는 비동기나 멀티스레드 프로그래밍을 사용하는 것이 효율적일 수 있습니다. 이를 통해 애플리케이션의 성능을 향상시키고, 서버 리소스를 더 효율적으로 활용할 수 있습니다. 따라서 애플리케이션의 요구 사항에 따라 적절한 접근법을 선택하는 것이 중요합니다.</p>
+<!--kg-card-end: markdown--><p></p><p></p>
+</section>
+
+    <div class="gh-comments gh-canvas">
+        
+        <script defer src="https://cdn.jsdelivr.net/ghost/comments-ui@~0.12/umd/comments-ui.min.js" data-ghost-comments="http://localhost:2368/" data-api="http://localhost:2368/ghost/api/content/" data-admin="http://localhost:2368/ghost/" data-key="a3bcd90eef780e8e2967d52431" data-styles="https://cdn.jsdelivr.net/ghost/comments-ui@~0.12/umd/main.css" data-title="null" data-count="true" data-post-id="64b157d3b104a3f8363cfa92" data-color-scheme="auto" data-avatar-saturation="60" data-accent-color="#28821c" data-comments-enabled="all" data-publication="midagedev blog" crossorigin="anonymous"></script>
+    
+    </div>
+
+<footer class="gh-article-footer gh-canvas no-border">
+    <nav class="gh-navigation">
+        <div class="gh-navigation-previous">
+        </div>
+
+        <a class="gh-navigation-middle" href="/page/2"><span>Browse</span> all issues</a>
+
+        <div class="gh-navigation-next">
+        </div>
+    </nav>
+</footer>    </article>
+</main>
+
+
+
+
+    <footer class="gh-foot gh-outer">
+        <div class="gh-foot-inner gh-inner">
+            <div class="gh-copyright">
+                midagedev blog © 2023
+            </div>
+                <nav class="gh-foot-menu">
+                    <ul class="nav">
+    <li class="nav-sign-up"><a href="#/portal/">Sign up</a></li>
+</ul>
+
+                </nav>
+            <div class="gh-powered-by">
+                <a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/assets/built/main.min.js?v=6f2ef9fcb8"></script>
+
+
+
+</body>
+
+</html>
