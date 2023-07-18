@@ -4,28 +4,28 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>commonjs is not going away</title>
+    <title>django viewset에서 create와 perform_create의 차이</title>
     <link rel="stylesheet" href="/assets/built/screen.css?v=2415bc6c04">
 
-    <link rel="canonical" href="https://blog.midagedev.com/commonjs-is-not-going-away/">
+    <link rel="canonical" href="https://blog.midagedev.com/django-preform-create/">
     <meta name="referrer" content="no-referrer-when-downgrade">
     
     <meta property="og:site_name" content="애매한중년개발자 blog">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="commonjs is not going away">
-    <meta property="og:description" content="앞서 deno의 글과는 상반된 입장의 bun의 블로그에 올라온 글 요약 from chatgpt
+    <meta property="og:title" content="django viewset에서 create와 perform_create의 차이">
+    <meta property="og:description" content="Django REST Framework에서 ViewSet은 API 로직을 구성하는 방법을 제공합니다. ViewSet에서 사용하는 주요 메서드 중 두 가지인 create와 perform_create에는 명확한 차이가 있습니다.
 
-&quot;CommonJS is not going away&quot;라는 제목의 기사는 CommonJS가 여전히 유지될 것이며, 이는 괜찮은 일이라고 말하고 있습니다. CommonJS는 2009년에 개발되어 Node.js에 의해 널리 사용되는 모듈 형식입니다. 반면 ECMAScript 모듈(ES 모듈)은 2015년에 도입되었습니다. ES 모듈은 브라우저에서">
-    <meta property="og:url" content="https://blog.midagedev.com/commonjs-is-not-going-away/">
-    <meta property="article:published_time" content="2023-07-14T16:27:18.000Z">
-    <meta property="article:modified_time" content="2023-07-14T16:27:18.000Z">
+ * create는 POST 요청이 들어왔을 때 데이터를 생성하는 뷰의 로직입니다. request 객체를 받아 해당 데이터를 이용해 새로운 인스턴스를 생성하고, 응답을 리턴하는 로직을 포함합니다. create 메서드는 API 요청에 대한 전체적인">
+    <meta property="og:url" content="https://blog.midagedev.com/django-preform-create/">
+    <meta property="article:published_time" content="2023-07-18T13:11:40.000Z">
+    <meta property="article:modified_time" content="2023-07-18T13:11:40.000Z">
     <meta property="article:publisher" content="https://www.facebook.com/ghost">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="commonjs is not going away">
-    <meta name="twitter:description" content="앞서 deno의 글과는 상반된 입장의 bun의 블로그에 올라온 글 요약 from chatgpt
+    <meta name="twitter:title" content="django viewset에서 create와 perform_create의 차이">
+    <meta name="twitter:description" content="Django REST Framework에서 ViewSet은 API 로직을 구성하는 방법을 제공합니다. ViewSet에서 사용하는 주요 메서드 중 두 가지인 create와 perform_create에는 명확한 차이가 있습니다.
 
-&quot;CommonJS is not going away&quot;라는 제목의 기사는 CommonJS가 여전히 유지될 것이며, 이는 괜찮은 일이라고 말하고 있습니다. CommonJS는 2009년에 개발되어 Node.js에 의해 널리 사용되는 모듈 형식입니다. 반면 ECMAScript 모듈(ES 모듈)은 2015년에 도입되었습니다. ES 모듈은 브라우저에서">
-    <meta name="twitter:url" content="https://blog.midagedev.com/commonjs-is-not-going-away/">
+ * create는 POST 요청이 들어왔을 때 데이터를 생성하는 뷰의 로직입니다. request 객체를 받아 해당 데이터를 이용해 새로운 인스턴스를 생성하고, 응답을 리턴하는 로직을 포함합니다. create 메서드는 API 요청에 대한 전체적인">
+    <meta name="twitter:url" content="https://blog.midagedev.com/django-preform-create/">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="kim hyeoncheol">
     <meta name="twitter:site" content="@ghost">
@@ -58,12 +58,12 @@
             "https://twitter.com/narx17"
         ]
     },
-    "headline": "commonjs is not going away",
-    "url": "https://blog.midagedev.com/commonjs-is-not-going-away/",
-    "datePublished": "2023-07-14T16:27:18.000Z",
-    "dateModified": "2023-07-14T16:27:18.000Z",
-    "description": "앞서 deno의 글과는 상반된 입장의 bun의 블로그에 올라온 글 요약 from chatgpt\n\n&quot;CommonJS is not going away&quot;라는 제목의 기사는 CommonJS가 여전히 유지될 것이며, 이는 괜찮은 일이라고 말하고 있습니다. CommonJS는 2009년에 개발되어 Node.js에 의해 널리 사용되는 모듈 형식입니다. 반면 ECMAScript 모듈(ES 모듈)은 2015년에 도입되었습니다. ES 모듈은 브라우저에서 작동하도록 설계되었으며, 파일이 네트워크를 통해 로드된다는 점에서 비동기적입니다.\n\nCommonJS의 장점 중 하나는 더 빠른 시작 시간입니다. 큰 애플리케이션의 경우 ES 모듈보다 CommonJS가 더 빠르게 시작됩니다. 또한 CommonJS는 동적 모듈 로딩을 허용합니다. 이는 플러그인 시스템이나 사용자 상호작용에 기반한 특정 구성 요소의 지연 로딩과 같은 시나리오에서 유용할 수 있습니다.\n\n또한 npm에 이미 수백만 개의 CommonJS 모듈이 게",
-    "mainEntityOfPage": "https://blog.midagedev.com/commonjs-is-not-going-away/"
+    "headline": "django viewset에서 create와 perform_create의 차이",
+    "url": "https://blog.midagedev.com/django-preform-create/",
+    "datePublished": "2023-07-18T13:11:40.000Z",
+    "dateModified": "2023-07-18T13:11:40.000Z",
+    "description": "Django REST Framework에서 ViewSet은 API 로직을 구성하는 방법을 제공합니다. ViewSet에서 사용하는 주요 메서드 중 두 가지인 create와 perform_create에는 명확한 차이가 있습니다.\n\n * create는 POST 요청이 들어왔을 때 데이터를 생성하는 뷰의 로직입니다. request 객체를 받아 해당 데이터를 이용해 새로운 인스턴스를 생성하고, 응답을 리턴하는 로직을 포함합니다. create 메서드는 API 요청에 대한 전체적인 흐름을 담당합니다.\n * 반면, perform_create는 create가 진행되는 과정 중, 실제로 새로운 데이터를 데이터베이스에 저장하는 역할을 합니다. perform_create 메서드에는 직접적으로 request 객체를 넘겨받지 않고, create로부터 전달받은 serializer와 validated_data를 이용해 데이터를 저장합니다.\n\n즉, create 메서드가 전체적인 생성 흐름을 담당하는 반면, per",
+    "mainEntityOfPage": "https://blog.midagedev.com/django-preform-create/"
 }
     </script>
 
@@ -112,23 +112,41 @@
     <article class="gh-article post no-image">
         <header class="gh-article-header gh-canvas">
     <div class="gh-article-meta">
-        <time class="gh-article-date" datetime="2023-07-15">2023년 7월 15일</time>
+        <time class="gh-article-date" datetime="2023-07-18">2023년 7월 18일</time>
     </div>
 
-    <h1 class="gh-article-title">commonjs is not going away</h1>
+    <h1 class="gh-article-title">django viewset에서 create와 perform_create의 차이</h1>
 
 </header>
 
 
 <section class="gh-content gh-canvas">
-    <p><a href="https://blog.midagedev.com/commonjs-is-hurting-javascript/?ref=localhost">앞서 deno의 글</a>과는 상반된 입장의 <a href="https://bun.sh/blog/commonjs-is-not-going-away?ref=localhost">bun의 블로그에 올라온 글</a> 요약 from chatgpt</p><p>"CommonJS is not going away"라는 제목의 기사는 CommonJS가 여전히 유지될 것이며, 이는 괜찮은 일이라고 말하고 있습니다. CommonJS는 2009년에 개발되어 Node.js에 의해 널리 사용되는 모듈 형식입니다. 반면 ECMAScript 모듈(ES 모듈)은 2015년에 도입되었습니다. ES 모듈은 브라우저에서 작동하도록 설계되었으며, 파일이 네트워크를 통해 로드된다는 점에서 비동기적입니다.</p><p>CommonJS의 장점 중 하나는 더 빠른 시작 시간입니다. 큰 애플리케이션의 경우 ES 모듈보다 CommonJS가 더 빠르게 시작됩니다. 또한 CommonJS는 동적 모듈 로딩을 허용합니다. 이는 플러그인 시스템이나 사용자 상호작용에 기반한 특정 구성 요소의 지연 로딩과 같은 시나리오에서 유용할 수 있습니다.</p><p>또한 npm에 이미 수백만 개의 CommonJS 모듈이 게시되어 있으며, 이 중 많은 모듈은 더 이상 활발히 유지되지 않지만 기존 프로젝트에 매우 중요합니다. 따라서 모든 패키지가 ES 모듈을 사용하도록 기대할 수는 없습니다.</p><p>Bun은 최근 버전에서 CommonJS를 기본적으로 구현하고 있으며, CommonJS 파일을 특별한 "동기식 ESM" 형식으로 변환하고 있습니다. 또한, Bun은 최근에 __esModule 주석을 지원하는 기능을 추가했습니다. 이는 CommonJS 모듈이 exports.default를 기본 내보내기로 해석해야 함을 나타내는 비공식적인 방법입니다.</p><p>결론적으로, CommonJS는 이미 여기에 있으며 존재하는 이유가 있습니다. Bun은 CommonJS를 중요하게 생각하고 있으며, 이를 현대적인 방식으로 지원하고 있습니다.</p>
+    <p><code>Django REST Framework</code>에서 <code>ViewSet</code>은 API 로직을 구성하는 방법을 제공합니다. <code>ViewSet</code>에서 사용하는 주요 메서드 중 두 가지인 <code>create</code>와 <code>perform_create</code>에는 명확한 차이가 있습니다.</p><ul><li><code>create</code>는 <code>POST</code> 요청이 들어왔을 때 데이터를 생성하는 뷰의 로직입니다. <code>request</code> 객체를 받아 해당 데이터를 이용해 새로운 인스턴스를 생성하고, 응답을 리턴하는 로직을 포함합니다. <code>create</code> 메서드는 API 요청에 대한 전체적인 흐름을 담당합니다.</li><li>반면, <code>perform_create</code>는 <code>create</code>가 진행되는 과정 중, 실제로 새로운 데이터를 데이터베이스에 저장하는 역할을 합니다. <code>perform_create</code> 메서드에는 직접적으로 <code>request</code> 객체를 넘겨받지 않고, <code>create</code>로부터 전달받은 serializer와 <code>validated_data</code>를 이용해 데이터를 저장합니다.</li></ul><p>즉, <code>create</code> 메서드가 전체적인 생성 흐름을 담당하는 반면, <code>perform_create</code>는 그 과정 중 데이터 저장에 집중하는 역할을 합니다.</p><p>이러한 구조는 코드의 모듈화와 재사용성을 향상시키며, 필요에 따라 <code>perform_create</code>를 오버라이드하면 <code>create</code> 메서드의 흐름은 그대로 유지하면서 데이터 저장 방식만을 변경하는 등의 유연한 커스터마이징을 가능하게 합니다.</p><pre><code class="language-python">from rest_framework import viewsets, status
+from rest_framework.response import Response
+from .serializers import YourModelSerializer
+from .models import YourModel
+
+class YourModelViewSet(viewsets.ModelViewSet):
+    queryset = YourModel.objects.all()
+    serializer_class = YourModelSerializer
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            self.perform_create(serializer)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+    def perform_create(self, serializer):
+        # 여기에서 실제로 모델 인스턴스를 생성합니다.
+        serializer.save()
+</code></pre><p>위 코드에서는 <code>create</code> 메서드에서 먼저 요청된 데이터(<code>request.data</code>)를 serializer를 통해 검증(<code>is_valid()</code>)합니다. 만약 검증이 성공하면, <code>perform_create</code> 메서드를 통해 데이터를 실제로 저장하고, 성공적으로 생성되었다는 응답을 보냅니다.</p><p><code>perform_create</code>는 serializer의 <code>save</code> 메서드를 호출하여 실제 데이터를 데이터베이스에 저장합니다. 필요에 따라 이 부분을 오버라이드하여 특정 로직을 추가하거나 변경할 수 있습니다.</p>
 </section>
 
 
 <footer class="gh-article-footer gh-canvas">
     <nav class="gh-navigation">
         <div class="gh-navigation-previous">
-                <a class="gh-navigation-link u-hover reverse" href="/commonjs-is-hurting-javascript/">
+                <a class="gh-navigation-link u-hover reverse" href="/commonjs-is-not-going-away/">
                     <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
     <path d="M20.547 22.107L14.44 16l6.107-6.12L18.667 8l-8 8 8 8 1.88-1.893z"></path>
 </svg>
@@ -144,15 +162,6 @@
         <a class="gh-navigation-middle" href="/page/2"><span>Browse</span> all issues</a>
 
         <div class="gh-navigation-next">
-                <a class="gh-navigation-link u-hover" href="/django-preform-create/">
-                    Next<span class="gh-navigation-hide">&nbsp;issue</span>
-                    <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
-    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
-</svg></span>
-                    <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
-    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
-</svg></span>
-                </a>
         </div>
     </nav>
 </footer>    </article>
