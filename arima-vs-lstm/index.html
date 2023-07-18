@@ -4,28 +4,28 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>django viewset에서 create와 perform_create의 차이</title>
+    <title>시계열 예측모델 ARIMA와 LSTM</title>
     <link rel="stylesheet" href="/assets/built/screen.css?v=2415bc6c04">
 
-    <link rel="canonical" href="https://blog.midagedev.com/django-preform-create/">
+    <link rel="canonical" href="https://blog.midagedev.com/arima-vs-lstm/">
     <meta name="referrer" content="no-referrer-when-downgrade">
     
     <meta property="og:site_name" content="애매한중년개발자 blog">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="django viewset에서 create와 perform_create의 차이">
-    <meta property="og:description" content="Django REST Framework에서 ViewSet은 API 로직을 구성하는 방법을 제공합니다. ViewSet에서 사용하는 주요 메서드 중 두 가지인 create와 perform_create에는 명확한 차이가 있습니다.
+    <meta property="og:title" content="시계열 예측모델 ARIMA와 LSTM">
+    <meta property="og:description" content="ARIMA (Autoregressive Integrated Moving Average)와 LSTM (Long Short-Term Memory)은 두 가지 주요 시계열 예측 알고리즘입니다. 그러나 이 두 알고리즘은 사용 방법, 구조, 그리고 동작 방식에서 꽤 많은 차이점이 있습니다.
 
- * create는 POST 요청이 들어왔을 때 데이터를 생성하는 뷰의 로직입니다. request 객체를 받아 해당 데이터를 이용해 새로운 인스턴스를 생성하고, 응답을 리턴하는 로직을 포함합니다. create 메서드는 API 요청에 대한 전체적인">
-    <meta property="og:url" content="https://blog.midagedev.com/django-preform-create/">
-    <meta property="article:published_time" content="2023-07-18T13:11:40.000Z">
-    <meta property="article:modified_time" content="2023-07-18T13:11:40.000Z">
+ 1. 모델 타입: ARIMA는 통계 기반의 선형 모델입니다. 시계열의 패턴을 인식하고 이를 사용하여 미래 값을 예측하는데, 자기 상관성이 있는">
+    <meta property="og:url" content="https://blog.midagedev.com/arima-vs-lstm/">
+    <meta property="article:published_time" content="2023-07-18T13:15:21.000Z">
+    <meta property="article:modified_time" content="2023-07-18T13:15:21.000Z">
     <meta property="article:publisher" content="https://www.facebook.com/ghost">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="django viewset에서 create와 perform_create의 차이">
-    <meta name="twitter:description" content="Django REST Framework에서 ViewSet은 API 로직을 구성하는 방법을 제공합니다. ViewSet에서 사용하는 주요 메서드 중 두 가지인 create와 perform_create에는 명확한 차이가 있습니다.
+    <meta name="twitter:title" content="시계열 예측모델 ARIMA와 LSTM">
+    <meta name="twitter:description" content="ARIMA (Autoregressive Integrated Moving Average)와 LSTM (Long Short-Term Memory)은 두 가지 주요 시계열 예측 알고리즘입니다. 그러나 이 두 알고리즘은 사용 방법, 구조, 그리고 동작 방식에서 꽤 많은 차이점이 있습니다.
 
- * create는 POST 요청이 들어왔을 때 데이터를 생성하는 뷰의 로직입니다. request 객체를 받아 해당 데이터를 이용해 새로운 인스턴스를 생성하고, 응답을 리턴하는 로직을 포함합니다. create 메서드는 API 요청에 대한 전체적인">
-    <meta name="twitter:url" content="https://blog.midagedev.com/django-preform-create/">
+ 1. 모델 타입: ARIMA는 통계 기반의 선형 모델입니다. 시계열의 패턴을 인식하고 이를 사용하여 미래 값을 예측하는데, 자기 상관성이 있는">
+    <meta name="twitter:url" content="https://blog.midagedev.com/arima-vs-lstm/">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="kim hyeoncheol">
     <meta name="twitter:site" content="@ghost">
@@ -58,12 +58,12 @@
             "https://twitter.com/narx17"
         ]
     },
-    "headline": "django viewset에서 create와 perform_create의 차이",
-    "url": "https://blog.midagedev.com/django-preform-create/",
-    "datePublished": "2023-07-18T13:11:40.000Z",
-    "dateModified": "2023-07-18T13:11:40.000Z",
-    "description": "Django REST Framework에서 ViewSet은 API 로직을 구성하는 방법을 제공합니다. ViewSet에서 사용하는 주요 메서드 중 두 가지인 create와 perform_create에는 명확한 차이가 있습니다.\n\n * create는 POST 요청이 들어왔을 때 데이터를 생성하는 뷰의 로직입니다. request 객체를 받아 해당 데이터를 이용해 새로운 인스턴스를 생성하고, 응답을 리턴하는 로직을 포함합니다. create 메서드는 API 요청에 대한 전체적인 흐름을 담당합니다.\n * 반면, perform_create는 create가 진행되는 과정 중, 실제로 새로운 데이터를 데이터베이스에 저장하는 역할을 합니다. perform_create 메서드에는 직접적으로 request 객체를 넘겨받지 않고, create로부터 전달받은 serializer와 validated_data를 이용해 데이터를 저장합니다.\n\n즉, create 메서드가 전체적인 생성 흐름을 담당하는 반면, per",
-    "mainEntityOfPage": "https://blog.midagedev.com/django-preform-create/"
+    "headline": "시계열 예측모델 ARIMA와 LSTM",
+    "url": "https://blog.midagedev.com/arima-vs-lstm/",
+    "datePublished": "2023-07-18T13:15:21.000Z",
+    "dateModified": "2023-07-18T13:15:21.000Z",
+    "description": "ARIMA (Autoregressive Integrated Moving Average)와 LSTM (Long Short-Term Memory)은 두 가지 주요 시계열 예측 알고리즘입니다. 그러나 이 두 알고리즘은 사용 방법, 구조, 그리고 동작 방식에서 꽤 많은 차이점이 있습니다.\n\n 1. 모델 타입: ARIMA는 통계 기반의 선형 모델입니다. 시계열의 패턴을 인식하고 이를 사용하여 미래 값을 예측하는데, 자기 상관성이 있는 선형 시계열 데이터에 적합합니다. 반면에 LSTM은 인공신경망의 한 종류로, 비선형 패턴을 학습하고 복잡한 시계열 데이터에서 더욱 효과적으로 작동합니다.\n 2. 시간 의존성: ARIMA는 고정된 시간 창(window) 내에서만 의존성을 인식할 수 있습니다. 즉, 창의 크기가 너무 커지면 모델의 성능이 저하될 수 있습니다. 반면에 LSTM은 &quot;장기 의존성&quot; 문제를 해결하기 위해 설계되었으며, 장기적인 의존성을 가진 데이터를 처리하는 데 더욱 유리합니다.\n 3. 데",
+    "mainEntityOfPage": "https://blog.midagedev.com/arima-vs-lstm/"
 }
     </script>
 
@@ -115,38 +115,20 @@
         <time class="gh-article-date" datetime="2023-07-18">2023년 7월 18일</time>
     </div>
 
-    <h1 class="gh-article-title">django viewset에서 create와 perform_create의 차이</h1>
+    <h1 class="gh-article-title">시계열 예측모델 ARIMA와 LSTM</h1>
 
 </header>
 
 
 <section class="gh-content gh-canvas">
-    <p><code>Django REST Framework</code>에서 <code>ViewSet</code>은 API 로직을 구성하는 방법을 제공합니다. <code>ViewSet</code>에서 사용하는 주요 메서드 중 두 가지인 <code>create</code>와 <code>perform_create</code>에는 명확한 차이가 있습니다.</p><ul><li><code>create</code>는 <code>POST</code> 요청이 들어왔을 때 데이터를 생성하는 뷰의 로직입니다. <code>request</code> 객체를 받아 해당 데이터를 이용해 새로운 인스턴스를 생성하고, 응답을 리턴하는 로직을 포함합니다. <code>create</code> 메서드는 API 요청에 대한 전체적인 흐름을 담당합니다.</li><li>반면, <code>perform_create</code>는 <code>create</code>가 진행되는 과정 중, 실제로 새로운 데이터를 데이터베이스에 저장하는 역할을 합니다. <code>perform_create</code> 메서드에는 직접적으로 <code>request</code> 객체를 넘겨받지 않고, <code>create</code>로부터 전달받은 serializer와 <code>validated_data</code>를 이용해 데이터를 저장합니다.</li></ul><p>즉, <code>create</code> 메서드가 전체적인 생성 흐름을 담당하는 반면, <code>perform_create</code>는 그 과정 중 데이터 저장에 집중하는 역할을 합니다.</p><p>이러한 구조는 코드의 모듈화와 재사용성을 향상시키며, 필요에 따라 <code>perform_create</code>를 오버라이드하면 <code>create</code> 메서드의 흐름은 그대로 유지하면서 데이터 저장 방식만을 변경하는 등의 유연한 커스터마이징을 가능하게 합니다.</p><pre><code class="language-python">from rest_framework import viewsets, status
-from rest_framework.response import Response
-from .serializers import YourModelSerializer
-from .models import YourModel
-
-class YourModelViewSet(viewsets.ModelViewSet):
-    queryset = YourModel.objects.all()
-    serializer_class = YourModelSerializer
-
-    def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            self.perform_create(serializer)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-    def perform_create(self, serializer):
-        # 여기에서 실제로 모델 인스턴스를 생성합니다.
-        serializer.save()
-</code></pre><p>위 코드에서는 <code>create</code> 메서드에서 먼저 요청된 데이터(<code>request.data</code>)를 serializer를 통해 검증(<code>is_valid()</code>)합니다. 만약 검증이 성공하면, <code>perform_create</code> 메서드를 통해 데이터를 실제로 저장하고, 성공적으로 생성되었다는 응답을 보냅니다.</p><p><code>perform_create</code>는 serializer의 <code>save</code> 메서드를 호출하여 실제 데이터를 데이터베이스에 저장합니다. 필요에 따라 이 부분을 오버라이드하여 특정 로직을 추가하거나 변경할 수 있습니다.</p>
+    <p>ARIMA (Autoregressive Integrated Moving Average)와 LSTM (Long Short-Term Memory)은 두 가지 주요 시계열 예측 알고리즘입니다. 그러나 이 두 알고리즘은 사용 방법, 구조, 그리고 동작 방식에서 꽤 많은 차이점이 있습니다.</p><ol><li><strong>모델 타입</strong>: ARIMA는 통계 기반의 선형 모델입니다. 시계열의 패턴을 인식하고 이를 사용하여 미래 값을 예측하는데, 자기 상관성이 있는 선형 시계열 데이터에 적합합니다. 반면에 LSTM은 인공신경망의 한 종류로, 비선형 패턴을 학습하고 복잡한 시계열 데이터에서 더욱 효과적으로 작동합니다.</li><li><strong>시간 의존성</strong>: ARIMA는 고정된 시간 창(window) 내에서만 의존성을 인식할 수 있습니다. 즉, 창의 크기가 너무 커지면 모델의 성능이 저하될 수 있습니다. 반면에 LSTM은 "장기 의존성" 문제를 해결하기 위해 설계되었으며, 장기적인 의존성을 가진 데이터를 처리하는 데 더욱 유리합니다.</li><li><strong>데이터 전처리</strong>: ARIMA는 정상 상태의 데이터를 필요로 합니다. 즉, 데이터가 일정한 평균과 분산을 가져야 합니다. 이를 위해 종종 차분(differencing)이나 변환(transformation)과 같은 전처리 단계가 필요합니다. LSTM은 이러한 전처리 과정이 필수적이지는 않지만, 종종 데이터의 스케일링이 필요할 수 있습니다.</li><li><strong>학습 시간</strong>: LSTM은 일반적으로 ARIMA보다 학습 시간이 더 길다. LSTM은 비선형적인 특징을 학습하고, 이를 위해 더 많은 파라미터를 학습해야 하기 때문입니다.</li><li><strong>해석 가능성</strong>: ARIMA 모델의 장점 중 하나는 그 결과를 해석하는 데 있어서의 명확성입니다. ARIMA 모델의 계수는 통계적으로 의미를 가질 수 있습니다. 반면에 LSTM은 일반적으로 '블랙박스' 모델로 여겨지며, 이는 그들의 내부 작동 방식을 이해하거나 설명하는 것이 어렵다는 의미입니다.</li></ol><p>이러한 차이점에도 불구하고, ARIMA와 LSTM 모두 시계열 데이터를 다루는 데 유용한 도구입니다. 어떤 알고리즘이 가장 적합한지는 문제의 특성, 사용 가능한 데이터, 그리고 특정 작업에 대한 요구 사항에 따라 달라집니다.</p>
 </section>
 
 
 <footer class="gh-article-footer gh-canvas">
     <nav class="gh-navigation">
         <div class="gh-navigation-previous">
-                <a class="gh-navigation-link u-hover reverse" href="/commonjs-is-not-going-away/">
+                <a class="gh-navigation-link u-hover reverse" href="/django-preform-create/">
                     <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
     <path d="M20.547 22.107L14.44 16l6.107-6.12L18.667 8l-8 8 8 8 1.88-1.893z"></path>
 </svg>
@@ -162,15 +144,6 @@ class YourModelViewSet(viewsets.ModelViewSet):
         <a class="gh-navigation-middle" href="/page/2"><span>Browse</span> all issues</a>
 
         <div class="gh-navigation-next">
-                <a class="gh-navigation-link u-hover" href="/arima-vs-lstm/">
-                    Next<span class="gh-navigation-hide">&nbsp;issue</span>
-                    <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
-    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
-</svg></span>
-                    <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
-    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
-</svg></span>
-                </a>
         </div>
     </nav>
 </footer>    </article>
