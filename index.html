@@ -88,23 +88,23 @@
             <header class="gh-article-header gh-canvas">
     <div class="gh-article-meta">
             <span class="gh-article-label">Latest issue</span>
-        <time class="gh-article-date" datetime="2023-07-18">2023년 7월 18일</time>
+        <time class="gh-article-date" datetime="2023-07-19">2023년 7월 19일</time>
     </div>
 
-    <h1 class="gh-article-title">시계열 예측모델 ARIMA와 LSTM</h1>
+    <h1 class="gh-article-title">More What, Less How</h1>
 
 </header>
 
 
 <section class="gh-content gh-canvas">
-    <p>ARIMA (Autoregressive Integrated Moving Average)와 LSTM (Long Short-Term Memory)은 두 가지 주요 시계열 예측 알고리즘입니다. 그러나 이 두 알고리즘은 사용 방법, 구조, 그리고 동작 방식에서 꽤 많은 차이점이 있습니다.</p><ol><li><strong>모델 타입</strong>: ARIMA는 통계 기반의 선형 모델입니다. 시계열의 패턴을 인식하고 이를 사용하여 미래 값을 예측하는데, 자기 상관성이 있는 선형 시계열 데이터에 적합합니다. 반면에 LSTM은 인공신경망의 한 종류로, 비선형 패턴을 학습하고 복잡한 시계열 데이터에서 더욱 효과적으로 작동합니다.</li><li><strong>시간 의존성</strong>: ARIMA는 고정된 시간 창(window) 내에서만 의존성을 인식할 수 있습니다. 즉, 창의 크기가 너무 커지면 모델의 성능이 저하될 수 있습니다. 반면에 LSTM은 "장기 의존성" 문제를 해결하기 위해 설계되었으며, 장기적인 의존성을 가진 데이터를 처리하는 데 더욱 유리합니다.</li><li><strong>데이터 전처리</strong>: ARIMA는 정상 상태의 데이터를 필요로 합니다. 즉, 데이터가 일정한 평균과 분산을 가져야 합니다. 이를 위해 종종 차분(differencing)이나 변환(transformation)과 같은 전처리 단계가 필요합니다. LSTM은 이러한 전처리 과정이 필수적이지는 않지만, 종종 데이터의 스케일링이 필요할 수 있습니다.</li><li><strong>학습 시간</strong>: LSTM은 일반적으로 ARIMA보다 학습 시간이 더 길다. LSTM은 비선형적인 특징을 학습하고, 이를 위해 더 많은 파라미터를 학습해야 하기 때문입니다.</li><li><strong>해석 가능성</strong>: ARIMA 모델의 장점 중 하나는 그 결과를 해석하는 데 있어서의 명확성입니다. ARIMA 모델의 계수는 통계적으로 의미를 가질 수 있습니다. 반면에 LSTM은 일반적으로 '블랙박스' 모델로 여겨지며, 이는 그들의 내부 작동 방식을 이해하거나 설명하는 것이 어렵다는 의미입니다.</li></ol><p>이러한 차이점에도 불구하고, ARIMA와 LSTM 모두 시계열 데이터를 다루는 데 유용한 도구입니다. 어떤 알고리즘이 가장 적합한지는 문제의 특성, 사용 가능한 데이터, 그리고 특정 작업에 대한 요구 사항에 따라 달라집니다.</p>
+    <figure class="kg-card kg-bookmark-card"><a class="kg-bookmark-container" href="https://tidyfirst.substack.com/p/more-what-less-how?ref=localhost"><div class="kg-bookmark-content"><div class="kg-bookmark-title">More What, Less How</div><div class="kg-bookmark-description">Synthetic -&gt; analytic skills</div><div class="kg-bookmark-metadata"><img class="kg-bookmark-icon" src="https://substackcdn.com/icons/substack/apple-touch-icon-1024x1024.png" alt><span class="kg-bookmark-author">Software Design: Tidy First?</span><span class="kg-bookmark-publisher">Kent Beck</span></div></div><div class="kg-bookmark-thumbnail"><img src="https://substackcdn.com/image/fetch/w_1200,h_600,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe7b504d6-4f2b-468c-8158-8e664f0dfbe0_950x402.png" alt></div></a></figure><p>kent back의 AI에 대한 2023년 4월 23일의 글을  chatgpt를 통해 요약한 내용<br><br>해당 글은 "More What, Less How"라는 제목으로, 프로그래밍 언어와 기술의 진화에 대한 이야기를 담고 있습니다.</p><p>1975년, 저자의 아버지는 어셈블리 언어 프로그래머로서, C와 같은 고급 언어에 대한 이야기를 점점 더 많이 듣게 되었습니다. C 언어는 프로그래머가 프로그램이 무엇을 해야 하는지 결정하고, C 컴파일러가 어떻게 그것을 수행할지 결정하도록 해주는 약속이었습니다.</p><p>하지만, 컴파일러는 수동으로 코드를 작성한 어셈블리 언어만큼 효율적이지 않을 것이며, 컴파일러는 코드를 작은 공간에 집어넣는 데 있어 어셈블리 언어만큼 능력이 없을 것이라는 우려가 있었습니다. 또한, 컴파일러가 실행하는 데 걸리는 시간이 어셈블러보다 길다는 문제도 있었습니다. 그러나 시간이 지남에 따라 컴파일러는 점점 더 나아졌습니다.</p><p>이러한 변화는 프로그래머가 프로그램이 무엇을 해야 하는지 말하게 하고, 모델이 그 작업을 어떻게 수행할지 파악하도록 하는 대형 언어 모델을 약속하는 것과 비슷합니다.</p><p>저자는 자신의 기술의 90%는 이제 가치가 없지만, 남은 10%는 이전보다 1000배 가치가 있다고 트윗했습니다. 이 90%와 10%가 무엇인지는 확실하지 않지만, 분석적 기술에서 찾아볼 수 있다고 말합니다. 즉, 무엇을 선택할 것인지, 피드백에 따라 무엇을 변경할 것인지, 이상한 비유를 찾아내는 것, 아무도 연결해볼 생각을 하지 않은 이상한 것들을 연결하는 것 등이 중요하다는 것입니다.</p><p>이 새로운 세상에서 처음부터 해결책을 창출하는 합성적인 기술은 가치가 떨어지지만, 문제와 해결책을 분석하는 기술은 가치가 크게 상승했습니다.</p><p>저자의 아버지는 어셈블리 언어에서 C 언어로 넘어갔고, 그는 여전히 같은 종류의 마이크로 컨트롤러 코드 작업을 수행했지만, 컴파일러는 그가 더 효율적으로 작업할 수 있게 해주었습니다. 그는 '어떻게'하는 기술을 포기하고 '무엇'에 더 집중하도록 배웠습니다.</p><p>이 이야기의 아이러니한 결말은, 저자가 대학을 졸업하고 객체 지향 프로그래밍이 대세가 되었을 때, 그의 아버지는 객체 지향 프로그래밍을 이해하려고 시도했지만 실패했다는 것입니다. 그는 마이크로 컨트롤러를 C로 계속 작성했고, 결국 수요가 사라지고 그는 은퇴하게 되었습니다.</p>
 </section>
 
 
 <footer class="gh-article-footer gh-canvas">
     <nav class="gh-navigation">
         <div class="gh-navigation-previous">
-                <a class="gh-navigation-link u-hover reverse" href="/django-preform-create/">
+                <a class="gh-navigation-link u-hover reverse" href="/arima-vs-lstm/">
                     <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
     <path d="M20.547 22.107L14.44 16l6.107-6.12L18.667 8l-8 8 8 8 1.88-1.893z"></path>
 </svg>
