@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>python 클래스의 classmethod와 staticmethod</title>
+    <link rel="stylesheet" href="/assets/built/screen.css?v=d141b747f3">
+
+    <link rel="canonical" href="https://blog.midagedev.com/python-classmethod-staticmethod/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="애매한중년개발자 blog">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="python 클래스의 classmethod와 staticmethod">
+    <meta property="og:description" content="이 데코레이터들은 메서드의 동작 방식을 변경하여, 인스턴스 메서드가 아닌 클래스 레벨에서 동작하는 메서드를 정의할 수 있게 해줍니다.
+
+
+ 1. @classmethod :
+
+
+ * 첫 번째 인자로 클래스 자체(cls)를 받습니다. 이를 통해 클래스 변수에 접근하거나 클래스 메서드를 호출할 수 있습니다.
+ * 인스턴스를 생성하지 않고도 클래스 레벨에서 메서드를 호출할 수 있습니다.
+ * Django 모델에서는, 특정 조건에">
+    <meta property="og:url" content="https://blog.midagedev.com/python-classmethod-staticmethod/">
+    <meta property="article:published_time" content="2023-08-13T13:36:06.000Z">
+    <meta property="article:modified_time" content="2023-08-13T13:36:06.000Z">
+    <meta property="article:publisher" content="https://www.facebook.com/ghost">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="python 클래스의 classmethod와 staticmethod">
+    <meta name="twitter:description" content="이 데코레이터들은 메서드의 동작 방식을 변경하여, 인스턴스 메서드가 아닌 클래스 레벨에서 동작하는 메서드를 정의할 수 있게 해줍니다.
+
+
+ 1. @classmethod :
+
+
+ * 첫 번째 인자로 클래스 자체(cls)를 받습니다. 이를 통해 클래스 변수에 접근하거나 클래스 메서드를 호출할 수 있습니다.
+ * 인스턴스를 생성하지 않고도 클래스 레벨에서 메서드를 호출할 수 있습니다.
+ * Django 모델에서는, 특정 조건에">
+    <meta name="twitter:url" content="https://blog.midagedev.com/python-classmethod-staticmethod/">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="kim hyeoncheol">
+    <meta name="twitter:site" content="@ghost">
+    <meta name="twitter:creator" content="@narx17">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "애매한중년개발자 blog",
+        "url": "https://blog.midagedev.com/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://blog.midagedev.com/favicon.ico"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "kim hyeoncheol",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://blog.midagedev.com/content/images/2023/07/--.jpg",
+            "width": 772,
+            "height": 714
+        },
+        "url": "https://blog.midagedev.com/author/kim/",
+        "sameAs": [
+            "https://twitter.com/narx17"
+        ]
+    },
+    "headline": "python 클래스의 classmethod와 staticmethod",
+    "url": "https://blog.midagedev.com/python-classmethod-staticmethod/",
+    "datePublished": "2023-08-13T13:36:06.000Z",
+    "dateModified": "2023-08-13T13:36:06.000Z",
+    "description": "이 데코레이터들은 메서드의 동작 방식을 변경하여, 인스턴스 메서드가 아닌 클래스 레벨에서 동작하는 메서드를 정의할 수 있게 해줍니다.\n\n\n 1. @classmethod :\n\n\n * 첫 번째 인자로 클래스 자체(cls)를 받습니다. 이를 통해 클래스 변수에 접근하거나 클래스 메서드를 호출할 수 있습니다.\n * 인스턴스를 생성하지 않고도 클래스 레벨에서 메서드를 호출할 수 있습니다.\n * Django 모델에서는, 특정 조건에 따른 쿼리셋을 반환하는 메서드나, 팩토리 메서드 등을 정의할 때 유용하게 사용될 수 있습니다.\n\n\n\nfrom django.db import models\n\nclass Book(models.Model):\n    title &#x3D; models.CharField(max_length&#x3D;100)\n    published_date &#x3D; models.DateField()\n\n    @classmethod\n    def get_recent_books(cls, days&#x3D;30):\n       ",
+    "mainEntityOfPage": "https://blog.midagedev.com/python-classmethod-staticmethod/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.54">
+    <link rel="alternate" type="application/rss+xml" title="애매한중년개발자 blog" href="https://blog.midagedev.com/rss/">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="a3bcd90eef780e8e2967d52431" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://blog.midagedev.com/" crossorigin="anonymous"></script>
+    
+    <link href="https://blog.midagedev.com/webmentions/receive/" rel="webmention">
+    <script defer src="/public/cards.min.js?v=d141b747f3"></script><style>:root {--ghost-accent-color: #28821c;}</style>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=d141b747f3">
+</head>
+
+<body class="post-template is-head-stacked has-serif-body">
+<div class="gh-site">
+
+    <header id="gh-head" class="gh-head gh-outer">
+        <div class="gh-head-inner gh-inner">
+            <div class="gh-head-brand">
+                <div class="gh-head-brand-wrapper">
+                    
+                    <a class="gh-head-logo" href="https://blog.midagedev.com">
+                            애매한중년개발자 blog
+                    </a>
+                    
+                </div>
+                <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+                <button class="gh-burger"></button>
+            </div>
+
+            <nav class="gh-head-menu">
+                <ul class="nav">
+    <li class="nav-home"><a href="https://blog.midagedev.com/">HOME</a></li>
+    <li class="nav-about"><a href="https://blog.midagedev.com/about/">ABOUT</a></li>
+</ul>
+
+                        <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+            </nav>
+
+            <div class="gh-head-actions">
+            </div>
+        </div>
+    </header>
+
+    
+<main class="gh-main">
+        <article class="gh-article post no-image">
+
+            <header class="gh-article-header gh-canvas">
+
+                <h1 class="gh-article-title">python 클래스의 classmethod와 staticmethod</h1>
+
+                    <aside class="gh-article-sidebar">
+
+        <div class="gh-author-image-list">
+                <a class="gh-author-image" href="/author/kim/">
+                        <img src="https://blog.midagedev.com/content/images/2023/07/--.jpg" alt="kim hyeoncheol">
+                </a>
+        </div>
+
+        <div class="gh-author-name-list">
+                <h4 class="gh-author-name">
+                    <a href="/author/kim/">kim hyeoncheol</a>
+                </h4>
+                
+        </div>
+
+        <div class="gh-article-meta">
+            <div class="gh-article-meta-inner">
+                <time class="gh-article-date" datetime="2023-08-13">2023년 8월 13일</time>
+                    <span class="gh-article-meta-sep"></span>
+                    <span class="gh-article-length">1 min</span>
+            </div>
+        </div>
+
+    </aside>
+
+
+                            </header>
+
+            <section class="gh-content gh-canvas">
+                <!--kg-card-begin: markdown--><p>이 데코레이터들은 메서드의 동작 방식을 변경하여, 인스턴스 메서드가 아닌 클래스 레벨에서 동작하는 메서드를 정의할 수 있게 해줍니다.</p>
+<ol>
+<li><strong>@classmethod</strong> :</li>
+</ol>
+<ul>
+<li>첫 번째 인자로 클래스 자체(<code>cls</code>)를 받습니다. 이를 통해 클래스 변수에 접근하거나 클래스 메서드를 호출할 수 있습니다.</li>
+<li>인스턴스를 생성하지 않고도 클래스 레벨에서 메서드를 호출할 수 있습니다.</li>
+<li>Django 모델에서는, 특정 조건에 따른 쿼리셋을 반환하는 메서드나, 팩토리 메서드 등을 정의할 때 유용하게 사용될 수 있습니다.</li>
+</ul>
+<pre><code class="language-python">
+from django.db import models
+
+class Book(models.Model):
+    title = models.CharField(max_length=100)
+    published_date = models.DateField()
+
+    @classmethod
+    def get_recent_books(cls, days=30):
+        recent_date = timezone.now() - timedelta(days=days)
+        return cls.objects.filter(published_date__gte=recent_date)
+</code></pre>
+<ol start="2">
+<li><strong>@staticmethod</strong> :</li>
+</ol>
+<ul>
+<li>클래스나 인스턴스를 참조하지 않는 메서드를 정의할 때 사용됩니다.</li>
+<li>이 메서드는 클래스의 상태나 인스턴스의 상태를 변경하지 않는, 순수한 함수처럼 동작합니다.</li>
+<li>Django 모델에서는, 모델과 직접적인 관련이 없는 보조 함수나 유틸리티 함수를 정의할 때 사용될 수 있습니다.</li>
+</ul>
+<pre><code class="language-python">
+class Book(models.Model):
+    title = models.CharField(max_length=100)
+    published_date = models.DateField()
+
+    @staticmethod
+    def is_valid_title(title):
+        return len(title) &gt; 0 and len(title) &lt;= 100
+</code></pre>
+<!--kg-card-end: markdown-->
+            </section>
+
+        </article>
+
+    
+        </main>
+
+    <footer class="gh-foot gh-outer">
+        <div class="gh-foot-inner gh-inner">
+
+            <nav class="gh-foot-menu">
+                
+            </nav>
+
+            <div class="gh-copyright">
+                    애매한중년개발자 blog © 2023. Powered by <a href="https://ghost.org/" target="_blank" rel="noopener">Ghost</a>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/assets/built/main.min.js?v=d141b747f3"></script>
+
+
+
+</body>
+
+</html>
