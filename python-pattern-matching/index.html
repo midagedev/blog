@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>python 패턴매칭</title>
+    <link rel="stylesheet" href="/assets/built/screen.css?v=d141b747f3">
+
+    <link rel="canonical" href="https://blog.midagedev.com/python-pattern-matching/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="애매한중년개발자 blog">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="python 패턴매칭">
+    <meta property="og:description" content="파이썬 3.10부터는 패턴 매칭을 위한 구조가 추가되었습니다. 패턴 매칭은 주로 switch/case 문을 대체하려는 의도로 도입되었으며, 파이썬에서는 match와 case 키워드를 사용하여 이를 구현합니다.
+
+
+
+기본 사용법
+
+
+간단한 match 예제를 보겠습니다:
+
+
+
+x &#x3D; 10
+
+match x:
+    case 10:
+        print(&quot;x는 10입니다.&quot;)
+    case 20:
+        print(&quot;x는 20입니다.&quot;)
+    case _:
+        print(&quot;x는 알 수 없는">
+    <meta property="og:url" content="https://blog.midagedev.com/python-pattern-matching/">
+    <meta property="article:published_time" content="2023-08-13T13:38:48.000Z">
+    <meta property="article:modified_time" content="2023-08-13T13:38:48.000Z">
+    <meta property="article:publisher" content="https://www.facebook.com/ghost">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="python 패턴매칭">
+    <meta name="twitter:description" content="파이썬 3.10부터는 패턴 매칭을 위한 구조가 추가되었습니다. 패턴 매칭은 주로 switch/case 문을 대체하려는 의도로 도입되었으며, 파이썬에서는 match와 case 키워드를 사용하여 이를 구현합니다.
+
+
+
+기본 사용법
+
+
+간단한 match 예제를 보겠습니다:
+
+
+
+x &#x3D; 10
+
+match x:
+    case 10:
+        print(&quot;x는 10입니다.&quot;)
+    case 20:
+        print(&quot;x는 20입니다.&quot;)
+    case _:
+        print(&quot;x는 알 수 없는">
+    <meta name="twitter:url" content="https://blog.midagedev.com/python-pattern-matching/">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="kim hyeoncheol">
+    <meta name="twitter:site" content="@ghost">
+    <meta name="twitter:creator" content="@narx17">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "애매한중년개발자 blog",
+        "url": "https://blog.midagedev.com/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://blog.midagedev.com/favicon.ico"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "kim hyeoncheol",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://blog.midagedev.com/content/images/2023/07/--.jpg",
+            "width": 772,
+            "height": 714
+        },
+        "url": "https://blog.midagedev.com/author/kim/",
+        "sameAs": [
+            "https://twitter.com/narx17"
+        ]
+    },
+    "headline": "python 패턴매칭",
+    "url": "https://blog.midagedev.com/python-pattern-matching/",
+    "datePublished": "2023-08-13T13:38:48.000Z",
+    "dateModified": "2023-08-13T13:38:48.000Z",
+    "description": "파이썬 3.10부터는 패턴 매칭을 위한 구조가 추가되었습니다. 패턴 매칭은 주로 switch/case 문을 대체하려는 의도로 도입되었으며, 파이썬에서는 match와 case 키워드를 사용하여 이를 구현합니다.\n\n\n\n기본 사용법\n\n\n간단한 match 예제를 보겠습니다:\n\n\n\nx &#x3D; 10\n\nmatch x:\n    case 10:\n        print(&quot;x는 10입니다.&quot;)\n    case 20:\n        print(&quot;x는 20입니다.&quot;)\n    case _:\n        print(&quot;x는 알 수 없는 값입니다.&quot;)\n\n\n\n위의 예제에서 _는 와일드카드로 모든 값을 의미합니다.\n\n\n\n다양한 패턴 매칭\n\n\n패턴 매칭은 단순한 값 비교 뿐만 아니라, 다양한 패턴에 대한 비교도 가능합니다.\n\n\n 1. 시퀀스 패턴 :\n    \n    리스트나 튜플과 같은 시퀀스에 대한 패턴을 지정할 수 있습니다.\n\n\n\nx &#x3D; [1, 2, 3]\n\nmatch x:\n    case [1, 2, 3]:\n   ",
+    "mainEntityOfPage": "https://blog.midagedev.com/python-pattern-matching/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.54">
+    <link rel="alternate" type="application/rss+xml" title="애매한중년개발자 blog" href="https://blog.midagedev.com/rss/">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="a3bcd90eef780e8e2967d52431" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://blog.midagedev.com/" crossorigin="anonymous"></script>
+    
+    <link href="https://blog.midagedev.com/webmentions/receive/" rel="webmention">
+    <script defer src="/public/cards.min.js?v=d141b747f3"></script><style>:root {--ghost-accent-color: #28821c;}</style>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=d141b747f3">
+</head>
+
+<body class="post-template is-head-stacked has-serif-body">
+<div class="gh-site">
+
+    <header id="gh-head" class="gh-head gh-outer">
+        <div class="gh-head-inner gh-inner">
+            <div class="gh-head-brand">
+                <div class="gh-head-brand-wrapper">
+                    
+                    <a class="gh-head-logo" href="https://blog.midagedev.com">
+                            애매한중년개발자 blog
+                    </a>
+                    
+                </div>
+                <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+                <button class="gh-burger"></button>
+            </div>
+
+            <nav class="gh-head-menu">
+                <ul class="nav">
+    <li class="nav-home"><a href="https://blog.midagedev.com/">HOME</a></li>
+    <li class="nav-about"><a href="https://blog.midagedev.com/about/">ABOUT</a></li>
+</ul>
+
+                        <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+            </nav>
+
+            <div class="gh-head-actions">
+            </div>
+        </div>
+    </header>
+
+    
+<main class="gh-main">
+        <article class="gh-article post no-image">
+
+            <header class="gh-article-header gh-canvas">
+
+                <h1 class="gh-article-title">python 패턴매칭</h1>
+
+                    <aside class="gh-article-sidebar">
+
+        <div class="gh-author-image-list">
+                <a class="gh-author-image" href="/author/kim/">
+                        <img src="https://blog.midagedev.com/content/images/2023/07/--.jpg" alt="kim hyeoncheol">
+                </a>
+        </div>
+
+        <div class="gh-author-name-list">
+                <h4 class="gh-author-name">
+                    <a href="/author/kim/">kim hyeoncheol</a>
+                </h4>
+                
+        </div>
+
+        <div class="gh-article-meta">
+            <div class="gh-article-meta-inner">
+                <time class="gh-article-date" datetime="2023-08-13">2023년 8월 13일</time>
+                    <span class="gh-article-meta-sep"></span>
+                    <span class="gh-article-length">3 min</span>
+            </div>
+        </div>
+
+    </aside>
+
+
+                            </header>
+
+            <section class="gh-content gh-canvas">
+                <!--kg-card-begin: markdown--><p>파이썬 3.10부터는 패턴 매칭을 위한 구조가 추가되었습니다. 패턴 매칭은 주로 <code>switch/case</code> 문을 대체하려는 의도로 도입되었으며, 파이썬에서는 <code>match</code>와 <code>case</code> 키워드를 사용하여 이를 구현합니다.</p>
+<h3 id="%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95">기본 사용법</h3>
+<p>간단한 <code>match</code> 예제를 보겠습니다:</p>
+<pre><code class="language-python">
+x = 10
+
+match x:
+    case 10:
+        print(&quot;x는 10입니다.&quot;)
+    case 20:
+        print(&quot;x는 20입니다.&quot;)
+    case _:
+        print(&quot;x는 알 수 없는 값입니다.&quot;)
+</code></pre>
+<p>위의 예제에서 <code>_</code>는 와일드카드로 모든 값을 의미합니다.</p>
+<h3 id="%EB%8B%A4%EC%96%91%ED%95%9C-%ED%8C%A8%ED%84%B4-%EB%A7%A4%EC%B9%AD">다양한 패턴 매칭</h3>
+<p>패턴 매칭은 단순한 값 비교 뿐만 아니라, 다양한 패턴에 대한 비교도 가능합니다.</p>
+<ol>
+<li><strong>시퀀스 패턴</strong> :<br>
+리스트나 튜플과 같은 시퀀스에 대한 패턴을 지정할 수 있습니다.</li>
+</ol>
+<pre><code class="language-python">
+x = [1, 2, 3]
+
+match x:
+    case [1, 2, 3]:
+        print(&quot;리스트는 [1, 2, 3]입니다.&quot;)
+    case [1, 2, _]:
+        print(&quot;리스트는 [1, 2, 어떤값]입니다.&quot;)
+</code></pre>
+<ol>
+<li><strong>매핑 패턴</strong> :<br>
+딕셔너리와 같은 매핑에 대한 패턴을 지정할 수 있습니다.</li>
+</ol>
+<pre><code class="language-python">
+person = {&quot;name&quot;: &quot;John&quot;, &quot;age&quot;: 30}
+
+match person:
+    case {&quot;name&quot;: str(), &quot;age&quot;: int()}:
+        print(&quot;이 사람의 이름은 문자열이고, 나이는 정수입니다.&quot;)
+</code></pre>
+<ol>
+<li><strong>클래스 패턴</strong> :<br>
+객체 인스턴스에 대한 패턴을 지정할 수 있습니다.</li>
+</ol>
+<pre><code class="language-python">
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+p = Point(1, 2)
+
+match p:
+    case Point(1, 2):
+        print(&quot;점의 좌표는 (1, 2)입니다.&quot;)
+    case Point(x, y) if x == y:
+        print(f&quot;점의 좌표는 ({x}, {y})이며 x와 y는 같습니다.&quot;)
+</code></pre>
+<ol>
+<li><strong>OR 패턴</strong> :<br>
+여러 패턴 중 하나와 일치하는 경우를 검사할 수 있습니다.</li>
+</ol>
+<pre><code class="language-python">
+x = 2
+
+match x:
+    case 1 | 2 | 3:
+        print(&quot;x는 1, 2 또는 3 중 하나입니다.&quot;)
+</code></pre>
+<h3 id="%EB%B3%80%EC%88%98-%EB%B0%94%EC%9D%B8%EB%94%A9">변수 바인딩</h3>
+<p>패턴 매칭을 사용하면 값을 직접 추출하여 변수에 바인딩할 수 있습니다.</p>
+<pre><code class="language-python">
+data = [1, (2, 3), 4]
+
+match data:
+    case [_, (a, b), _]:
+        print(f&quot;a = {a}, b = {b}&quot;)
+</code></pre>
+<p>이 예제에서는 <code>data</code>의 두 번째 요소 중 첫 번째 값이 <code>a</code>에, 두 번째 값이 <code>b</code>에 바인딩됩니다.</p>
+<h3 id="%ED%8C%A8%ED%84%B4-%EB%A7%A4%EC%B9%AD%EC%9D%98-%EC%A3%BC%EC%9D%98%EC%A0%90">패턴 매칭의 주의점</h3>
+<ul>
+<li>패턴 매칭은 일반적인 변수 할당과 달리 <em>대입</em>이 아니라 <em>비교</em>입니다. 따라서 값이 아닌 패턴을 지정해야 합니다.</li>
+<li>패턴의 순서는 중요합니다. 첫 번째로 일치하는 패턴만 실행되기 때문에, 상위 패턴이 하위 패턴보다 먼저 오면 하위 패턴은 실행되지 않을 수 있습니다.</li>
+<li>와일드카드 <code>_</code>는 모든 값을 의미하는 특별한 변수입니다. 따라서 값을 저장하거나 사용할 수 없습니다.</li>
+</ul>
+<p>파이썬의 패턴 매칭은 코드의 가독성을 높이고, 복잡한 데이터 구조를 쉽게 분석할 수 있게 해줍니다. 하지만 특성과 구문을 정확하게 이해하고 사용하는 것이 중요합니다.</p>
+<!--kg-card-end: markdown-->
+            </section>
+
+        </article>
+
+    
+        </main>
+
+    <footer class="gh-foot gh-outer">
+        <div class="gh-foot-inner gh-inner">
+
+            <nav class="gh-foot-menu">
+                
+            </nav>
+
+            <div class="gh-copyright">
+                    애매한중년개발자 blog © 2023. Powered by <a href="https://ghost.org/" target="_blank" rel="noopener">Ghost</a>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/assets/built/main.min.js?v=d141b747f3"></script>
+
+
+
+</body>
+
+</html>
