@@ -1,4 +1,209 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[애매한중년개발자 blog]]></title><description><![CDATA[개발 관련 메모장]]></description><link>https://blog.midagedev.com/</link><image><url>https://blog.midagedev.com/favicon.png</url><title>애매한중년개발자 blog</title><link>https://blog.midagedev.com/</link></image><generator>Ghost 5.54</generator><lastBuildDate>Sun, 13 Aug 2023 13:02:26 GMT</lastBuildDate><atom:link href="https://blog.midagedev.com/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Domain-Driven Design 도메인 주도 개발]]></title><description><![CDATA[<!--kg-card-begin: markdown--><p>DDD&#xC5D0; &#xB300;&#xD574; ChatGPT&#xB300;&#xD654;&#xD55C; &#xB0B4;&#xC6A9;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[애매한중년개발자 blog]]></title><description><![CDATA[개발 관련 메모장]]></description><link>https://blog.midagedev.com/</link><image><url>https://blog.midagedev.com/favicon.png</url><title>애매한중년개발자 blog</title><link>https://blog.midagedev.com/</link></image><generator>Ghost 5.54</generator><lastBuildDate>Sun, 13 Aug 2023 13:23:04 GMT</lastBuildDate><atom:link href="https://blog.midagedev.com/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[python의 dataclass]]></title><description><![CDATA[<!--kg-card-begin: markdown--><h1 id="%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%81%B4%EB%9E%98%EC%8A%A4%EC%97%90-%EB%8C%80%ED%95%B4-%EC%95%8C%EB%A0%A4%EC%A4%98">&#xB370;&#xC774;&#xD130;&#xD074;&#xB798;&#xC2A4;&#xC5D0; &#xB300;&#xD574; &#xC54C;&#xB824;&#xC918;</h1>
+<p><code>dataclass</code>&#xB294; Python 3.7&#xBD80;&#xD130; &#xD45C;&#xC900; &#xB77C;&#xC774;&#xBE0C;&#xB7EC;&#xB9AC;&#xC778; <code>dataclasses</code> &#xBAA8;&#xB4C8;&#xC5D0; &#xCD94;&#xAC00;&#xB41C; &#xB370;&#xCF54;&#xB808;&#xC774;&#xD130;&#xC785;&#xB2C8;&#xB2E4;. &#xAE30;&#xBCF8;&#xC801;&#xC73C;&#xB85C; <code>dataclass</code>&#xB294; &#xD074;</p>]]></description><link>https://blog.midagedev.com/python-dataclass/</link><guid isPermaLink="false">64d8d7af4026ab090184209c</guid><dc:creator><![CDATA[kim hyeoncheol]]></dc:creator><pubDate>Sun, 13 Aug 2023 13:22:48 GMT</pubDate><content:encoded><![CDATA[<!--kg-card-begin: markdown--><h1 id="%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%81%B4%EB%9E%98%EC%8A%A4%EC%97%90-%EB%8C%80%ED%95%B4-%EC%95%8C%EB%A0%A4%EC%A4%98">&#xB370;&#xC774;&#xD130;&#xD074;&#xB798;&#xC2A4;&#xC5D0; &#xB300;&#xD574; &#xC54C;&#xB824;&#xC918;</h1>
+<p><code>dataclass</code>&#xB294; Python 3.7&#xBD80;&#xD130; &#xD45C;&#xC900; &#xB77C;&#xC774;&#xBE0C;&#xB7EC;&#xB9AC;&#xC778; <code>dataclasses</code> &#xBAA8;&#xB4C8;&#xC5D0; &#xCD94;&#xAC00;&#xB41C; &#xB370;&#xCF54;&#xB808;&#xC774;&#xD130;&#xC785;&#xB2C8;&#xB2E4;. &#xAE30;&#xBCF8;&#xC801;&#xC73C;&#xB85C; <code>dataclass</code>&#xB294; &#xD074;&#xB798;&#xC2A4; &#xB0B4;&#xC758; &#xD544;&#xB4DC;&#xB4E4;&#xC744; &#xAE30;&#xBC18;&#xC73C;&#xB85C; &#xCD08;&#xAE30;&#xD654;, &#xBE44;&#xAD50;, &#xCD9C;&#xB825; &#xBA54;&#xC11C;&#xB4DC; &#xB4F1;&#xC744; &#xC790;&#xB3D9;&#xC73C;&#xB85C; &#xC0DD;&#xC131;&#xD574; &#xC90D;&#xB2C8;&#xB2E4;. <code>dataclass</code>&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xBA74; &#xBC18;&#xBCF5;&#xC801;&#xC778; &#xCF54;&#xB4DC;&#xB97C; &#xC791;&#xC131;&#xD558;&#xC9C0; &#xC54A;&#xACE0;&#xB3C4; &#xAE54;&#xB054;&#xD558;&#xAC8C; &#xB370;&#xC774;&#xD130;&#xB97C; &#xC800;&#xC7A5;&#xD558;&#xACE0; &#xC0AC;&#xC6A9;&#xD558;&#xB294; &#xD074;&#xB798;&#xC2A4;&#xB97C; &#xC791;&#xC131;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<p>&#xC608;&#xC81C;&#xB97C; &#xD1B5;&#xD574; &#xC774;&#xD574;&#xD574;&#xBD05;&#xC2DC;&#xB2E4;:</p>
+<pre><code class="language-python">
+from dataclasses import dataclass
+
+@dataclass
+class Point:
+    x: float
+    y: float
+    z: float = 0.0  # &#xAE30;&#xBCF8;&#xAC12; &#xC124;&#xC815;&#xB3C4; &#xAC00;&#xB2A5;
+</code></pre>
+<p>&#xC704;&#xC758; &#xC608;&#xC81C;&#xC5D0;&#xC11C; <code>Point</code> &#xD074;&#xB798;&#xC2A4;&#xB294; x, y, z &#xC138; &#xAC1C;&#xC758; &#xD544;&#xB4DC;&#xB97C; &#xAC00;&#xC9D1;&#xB2C8;&#xB2E4;. <code>dataclass</code> &#xB355;&#xBD84;&#xC5D0; &#xC544;&#xB798;&#xC640; &#xAC19;&#xC740; &#xAE30;&#xB2A5;&#xB4E4;&#xC774; &#xC790;&#xB3D9;&#xC73C;&#xB85C; &#xC81C;&#xACF5;&#xB429;&#xB2C8;&#xB2E4;:</p>
+<ul>
+<li>&#xCD08;&#xAE30;&#xD654; &#xBA54;&#xC11C;&#xB4DC; <code>__init__</code></li>
+<li>&#xD45C;&#xD604; &#xBA54;&#xC11C;&#xB4DC; <code>__repr__</code></li>
+<li>&#xBE44;&#xAD50; &#xBA54;&#xC11C;&#xB4DC; <code>__eq__</code></li>
+</ul>
+<p>&#xC0AC;&#xC6A9; &#xC608;:</p>
+<pre><code class="language-python">
+p1 = Point(1.0, 2.0)
+print(p1)  # Point(x=1.0, y=2.0, z=0.0)
+
+p2 = Point(1.0, 2.0, 3.0)
+print(p2)  # Point(x=1.0, y=2.0, z=3.0)
+
+print(p1 == p2)  # False
+</code></pre>
+<p><code>dataclass</code>&#xC758; &#xC8FC;&#xC694; &#xAE30;&#xB2A5; &#xBC0F; &#xC635;&#xC158;:</p>
+<ol>
+<li><strong>Field Defaults</strong> : &#xD544;&#xB4DC;&#xC758; &#xAE30;&#xBCF8;&#xAC12;&#xC744; &#xC9C0;&#xC815;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</li>
+<li><strong>Type Annotations</strong> : &#xD544;&#xB4DC;&#xC5D0; &#xD0C0;&#xC785; &#xD78C;&#xD2B8;&#xB97C; &#xC81C;&#xACF5;&#xD574;&#xC57C; &#xD569;&#xB2C8;&#xB2E4;. &#xADF8;&#xB807;&#xC9C0; &#xC54A;&#xC73C;&#xBA74; <code>dataclass</code>&#xB294; &#xD574;&#xB2F9; &#xD544;&#xB4DC;&#xB97C; &#xBB34;&#xC2DC;&#xD569;&#xB2C8;&#xB2E4;.</li>
+<li><strong>Ordering</strong> : <code>order=True</code> &#xC635;&#xC158;&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xBA74;, &#xAC1D;&#xCCB4; &#xAC04;&#xC758; &#xC21C;&#xC11C; &#xBE44;&#xAD50;&#xB97C; &#xC704;&#xD55C; &#xBA54;&#xC11C;&#xB4DC;&#xB4E4;(<code>__lt__</code>, <code>__le__</code>, &#xB4F1;)&#xC774; &#xC790;&#xB3D9;&#xC73C;&#xB85C; &#xC0DD;&#xC131;&#xB429;&#xB2C8;&#xB2E4;.</li>
+<li><strong>Immutability</strong> : <code>frozen=True</code> &#xC635;&#xC158;&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xBA74;, &#xBD88;&#xBCC0; &#xAC1D;&#xCCB4;&#xB97C; &#xB9CC;&#xB4E4; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774;&#xB807;&#xAC8C; &#xD558;&#xBA74; &#xD544;&#xB4DC; &#xAC12;&#xC744; &#xBCC0;&#xACBD;&#xD558;&#xB824;&#xACE0; &#xD560; &#xB54C; &#xC608;&#xC678;&#xAC00; &#xBC1C;&#xC0DD;&#xD569;&#xB2C8;&#xB2E4;.</li>
+</ol>
+<p><code>dataclass</code>&#xB294; &#xBCF4;&#xC77C;&#xB7EC;&#xD50C;&#xB808;&#xC774;&#xD2B8; &#xCF54;&#xB4DC; &#xC791;&#xC131;&#xC744; &#xC904;&#xC5EC;&#xC8FC;&#xBBC0;&#xB85C;, &#xB370;&#xC774;&#xD130;&#xB97C; &#xB2E4;&#xB8E8;&#xB294; &#xD074;&#xB798;&#xC2A4;&#xB97C; &#xC791;&#xC131;&#xD560; &#xB54C; &#xB9E4;&#xC6B0; &#xC720;&#xC6A9;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h1 id="python-37-%EC%9D%B4%EC%A0%84%EC%97%90%EB%8A%94-%EA%B7%B8%EB%9F%BC-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8C%80%EC%9D%91%ED%96%88%EC%9D%84%EA%B9%8C">python 3.7 &#xC774;&#xC804;&#xC5D0;&#xB294; &#xADF8;&#xB7FC; &#xC5B4;&#xB5BB;&#xAC8C; &#xB300;&#xC751;&#xD588;&#xC744;&#xAE4C;</h1>
+<p>dataclass`&#xAC00; &#xB3C4;&#xC785;&#xB418;&#xAE30; &#xC804;&#xC5D0;, &#xD30C;&#xC774;&#xC36C;&#xC5D0;&#xC11C;&#xB294; &#xC5EC;&#xB7EC; &#xAC00;&#xC9C0; &#xBC29;&#xBC95;&#xC73C;&#xB85C; &#xB370;&#xC774;&#xD130;&#xB97C; &#xB2F4;&#xB294; &#xD074;&#xB798;&#xC2A4;&#xB97C; &#xC815;&#xC758;&#xD558;&#xACE0; &#xC0AC;&#xC6A9;&#xD588;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC544;&#xB798;&#xB294; &#xC8FC;&#xC694;&#xD55C; &#xC811;&#xADFC; &#xBC29;&#xBC95;&#xB4E4;&#xC785;&#xB2C8;&#xB2E4;:</p>
+<ol>
+<li><strong>&#xC77C;&#xBC18;&#xC801;&#xC778; &#xD074;&#xB798;&#xC2A4; &#xC815;&#xC758;</strong> : &#xC9C1;&#xC811; <code>__init__</code>, <code>__repr__</code>, <code>__eq__</code> &#xB4F1;&#xC758; &#xB9E4;&#xC9C1; &#xBA54;&#xC11C;&#xB4DC;&#xB97C; &#xAD6C;&#xD604;&#xD588;&#xC2B5;&#xB2C8;&#xB2E4;.</li>
+</ol>
+<pre><code class="language-python">
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __repr__(self):
+        return f&quot;Point({self.x}, {self.y})&quot;
+    
+    def __eq__(self, other):
+        return self.x == other.x and self.y == other.y
+</code></pre>
+<ol start="2">
+<li><strong>namedtuple</strong> : <code>collections</code> &#xBAA8;&#xB4C8;&#xC5D0;&#xC11C; &#xC81C;&#xACF5;&#xD558;&#xB294; <code>namedtuple</code>&#xC740; &#xAC04;&#xB2E8;&#xD55C; &#xBD88;&#xBCC0; &#xB370;&#xC774;&#xD130; &#xAD6C;&#xC870;&#xB97C; &#xC815;&#xC758;&#xD558;&#xB294;&#xB370; &#xC0AC;&#xC6A9;&#xB418;&#xC5C8;&#xC2B5;&#xB2C8;&#xB2E4;. &#xB2E8;, <code>namedtuple</code> &#xC778;&#xC2A4;&#xD134;&#xC2A4;&#xB294; &#xC218;&#xC815;&#xD560; &#xC218; &#xC5C6;&#xC2B5;&#xB2C8;&#xB2E4;.</li>
+</ol>
+<pre><code class="language-python">
+from collections import namedtuple
+
+Point = namedtuple(&quot;Point&quot;, [&quot;x&quot;, &quot;y&quot;])
+</code></pre>
+<ol start="3">
+<li><strong>attrs</strong> : <code>dataclass</code>&#xAC00; &#xB3C4;&#xC785;&#xB418;&#xAE30; &#xC804;&#xC5D0; <code>attrs</code> &#xB77C;&#xC774;&#xBE0C;&#xB7EC;&#xB9AC;&#xB294; &#xB370;&#xC774;&#xD130; &#xD074;&#xB798;&#xC2A4; &#xC0DD;&#xC131;&#xC5D0; &#xB300;&#xD55C; &#xAC15;&#xB825;&#xD55C; &#xB3C4;&#xAD6C;&#xB85C; &#xC778;&#xAE30;&#xB97C; &#xC5BB;&#xC5C8;&#xC2B5;&#xB2C8;&#xB2E4;. <code>attrs</code>&#xB294; <code>dataclass</code>&#xC640; &#xC720;&#xC0AC;&#xD55C; &#xAE30;&#xB2A5;&#xC744; &#xC81C;&#xACF5;&#xD558;&#xC9C0;&#xB9CC;, &#xB354; &#xB9CE;&#xC740; &#xCEE4;&#xC2A4;&#xD130;&#xB9C8;&#xC774;&#xC9D5;&#xACFC; &#xC720;&#xD2F8;&#xB9AC;&#xD2F0;&#xB97C; &#xC81C;&#xACF5;&#xD569;&#xB2C8;&#xB2E4;.</li>
+</ol>
+<pre><code class="language-python">
+import attr
+
+@attr.s
+class Point:
+    x = attr.ib()
+    y = attr.ib()
+</code></pre>
+<p>&#xC774;&#xB7EC;&#xD55C; &#xC811;&#xADFC; &#xBC29;&#xBC95;&#xB4E4;&#xC740; &#xC5EC;&#xC804;&#xD788; &#xC720;&#xD6A8;&#xD558;&#xBA70;, &#xD2B9;&#xC815; &#xC0C1;&#xD669;&#xC5D0; &#xB530;&#xB77C; <code>dataclass</code>&#xBCF4;&#xB2E4; &#xB354; &#xC801;&#xD569;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xADF8;&#xB7EC;&#xB098; <code>dataclass</code>&#xAC00; &#xB3C4;&#xC785;&#xB418;&#xBA74;&#xC11C; &#xD45C;&#xC900; &#xB77C;&#xC774;&#xBE0C;&#xB7EC;&#xB9AC;&#xC5D0;&#xC11C; &#xC81C;&#xACF5;&#xD558;&#xB294; &#xAC04;&#xACB0;&#xD558;&#xACE0; &#xAC15;&#xB825;&#xD55C; &#xB3C4;&#xAD6C;&#xB85C; &#xC778;&#xAE30;&#xB97C; &#xC5BB;&#xAC8C; &#xB418;&#xC5C8;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<h1 id="django%EC%97%90%EC%84%9C-dataclass%EC%9D%98-%ED%99%9C%EC%9A%A9">django&#xC5D0;&#xC11C; dataclass&#xC758; &#xD65C;&#xC6A9;</h1>
+<p>Django&#xB294; ORM &#xAE30;&#xBC18;&#xC758; &#xC6F9; &#xD504;&#xB808;&#xC784;&#xC6CC;&#xD06C;&#xC774;&#xAE30; &#xB54C;&#xBB38;&#xC5D0;, <code>dataclass</code>&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xB294; &#xAC83;&#xC774; &#xD56D;&#xC0C1; &#xC9C1;&#xAD00;&#xC801;&#xC774;&#xC9C0;&#xB294; &#xC54A;&#xC2B5;&#xB2C8;&#xB2E4;. &#xADF8;&#xB7EC;&#xB098; &#xD2B9;&#xC815; &#xACBD;&#xC6B0;&#xC5D0; <code>dataclass</code>&#xB97C; &#xD65C;&#xC6A9;&#xD558;&#xC5EC; &#xCF54;&#xB4DC;&#xC758; &#xAC00;&#xB3C5;&#xC131;&#xACFC; &#xC720;&#xC9C0;&#xBCF4;&#xC218;&#xC131;&#xC744; &#xB192;&#xC77C; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<h3 id="1-django-form-%EB%8C%80%EC%B2%B4%ED%95%98%EA%B8%B0">1. Django Form &#xB300;&#xCCB4;&#xD558;&#xAE30;</h3>
+<p>&#xC804;&#xD1B5;&#xC801;&#xC73C;&#xB85C; Django&#xC5D0;&#xC11C;&#xB294; <code>forms.ModelForm</code> &#xB610;&#xB294; <code>forms.Form</code>&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xC5EC; &#xD3FC; &#xB370;&#xC774;&#xD130;&#xB97C; &#xCC98;&#xB9AC;&#xD569;&#xB2C8;&#xB2E4;. &#xADF8;&#xB7EC;&#xB098; &#xACBD;&#xC6B0;&#xC5D0; &#xB530;&#xB77C; <code>dataclass</code>&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xC5EC; form &#xB370;&#xC774;&#xD130;&#xC758; &#xAD6C;&#xC870;&#xC640; &#xC720;&#xD6A8;&#xC131; &#xAC80;&#xC0AC; &#xB85C;&#xC9C1;&#xC744; &#xBD84;&#xB9AC;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="language-python">
+from dataclasses import dataclass
+from django import forms
+
+@dataclass
+class UserRegistrationData:
+    username: str
+    password: str
+    email: str
+
+class UserRegistrationForm(forms.Form):
+    username = forms.CharField(max_length=100)
+    password = forms.CharField(widget=forms.PasswordInput)
+    email = forms.EmailField()
+
+    def clean(self):
+        cleaned_data = super().clean()
+        return UserRegistrationData(
+            username=cleaned_data.get(&quot;username&quot;),
+            password=cleaned_data.get(&quot;password&quot;),
+            email=cleaned_data.get(&quot;email&quot;)
+        )
+</code></pre>
+<h3 id="2-queryset-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B3%80%ED%99%98%ED%95%98%EA%B8%B0">2. QuerySet &#xB370;&#xC774;&#xD130; &#xBCC0;&#xD658;&#xD558;&#xAE30;</h3>
+<p>Django&#xC758; QuerySet&#xC5D0;&#xC11C; &#xBC18;&#xD658;&#xB418;&#xB294; &#xBAA8;&#xB378; &#xC778;&#xC2A4;&#xD134;&#xC2A4; &#xB300;&#xC2E0;&#xC5D0;, &#xB370;&#xC774;&#xD130; &#xC804;&#xC1A1; &#xAC1D;&#xCCB4;&#xB098; &#xD2B9;&#xC815; &#xC6A9;&#xB3C4;&#xB85C; &#xAD6C;&#xC870;&#xD654;&#xB41C; &#xAC1D;&#xCCB4;&#xB97C; &#xBC18;&#xD658;&#xD558;&#xACE0; &#xC2F6;&#xC744; &#xB54C; <code>dataclass</code>&#xB97C; &#xC0AC;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="language-python">
+from dataclasses import dataclass
+from myapp.models import Blog
+
+@dataclass
+class BlogSummary:
+    title: str
+    author_name: str
+
+def get_blog_summaries():
+    blogs = Blog.objects.all()
+    return [BlogSummary(title=blog.title, author_name=blog.author.name) for blog in blogs]
+</code></pre>
+<h3 id="3-api-%EC%9D%91%EB%8B%B5-%EA%B5%AC%EC%A1%B0%ED%99%94%ED%95%98%EA%B8%B0">3. API &#xC751;&#xB2F5; &#xAD6C;&#xC870;&#xD654;&#xD558;&#xAE30;</h3>
+<p>API &#xC751;&#xB2F5;&#xC758; &#xD615;&#xD0DC;&#xB97C; <code>dataclass</code>&#xB85C; &#xC815;&#xC758;&#xD558;&#xC5EC;, &#xC751;&#xB2F5;&#xC758; &#xAD6C;&#xC870;&#xC640; &#xB370;&#xC774;&#xD130;&#xB97C; &#xBA85;&#xD655;&#xD558;&#xAC8C; &#xD45C;&#xD604;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="language-python">
+from dataclasses import dataclass
+from rest_framework.response import Response
+
+@dataclass
+class UserResponse:
+    id: int
+    name: str
+    email: str
+
+def user_detail_view(request, user_id):
+    user = get_user_from_database(user_id)  # &#xC5EC;&#xAE30;&#xC11C;&#xB294; &#xC608;&#xC2DC;&#xB85C;, &#xC2E4;&#xC81C;&#xB85C; &#xB370;&#xC774;&#xD130;&#xB97C; &#xAC00;&#xC838;&#xC624;&#xB294; &#xB85C;&#xC9C1;&#xC774; &#xD544;&#xC694;&#xD569;&#xB2C8;&#xB2E4;.
+    response_data = UserResponse(id=user.id, name=user.name, email=user.email)
+    return Response(response_data)
+</code></pre>
+<h3 id="4-%EB%B9%84%EC%A6%88%EB%8B%88%EC%8A%A4-%EB%A1%9C%EC%A7%81-%EB%82%B4%EB%B6%80%EC%9D%98-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%84%EB%8B%AC">4. &#xBE44;&#xC988;&#xB2C8;&#xC2A4; &#xB85C;&#xC9C1; &#xB0B4;&#xBD80;&#xC758; &#xB370;&#xC774;&#xD130; &#xC804;&#xB2EC;</h3>
+<p>&#xBCF5;&#xC7A1;&#xD55C; &#xBE44;&#xC988;&#xB2C8;&#xC2A4; &#xB85C;&#xC9C1;&#xC744; &#xCC98;&#xB9AC;&#xD558;&#xB294; &#xB3D9;&#xC548; &#xB2E4;&#xC591;&#xD55C; &#xD568;&#xC218;&#xB098; &#xBA54;&#xC11C;&#xB4DC;&#xC5D0; &#xB370;&#xC774;&#xD130;&#xB97C; &#xC804;&#xB2EC;&#xD560; &#xB54C; <code>dataclass</code>&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xC5EC; &#xB370;&#xC774;&#xD130;&#xC758; &#xAD6C;&#xC870;&#xB97C; &#xBA85;&#xD655;&#xD788; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="language-python">
+from dataclasses import dataclass
+
+@dataclass
+class OrderCalculationContext:
+    base_price: float
+    discount: float
+    tax: float
+
+def calculate_total_price(context: OrderCalculationContext) -&gt; float:
+    return context.base_price - context.discount + context.tax
+</code></pre>
+<p>&#xC774;&#xB7EC;&#xD55C; &#xBC29;&#xBC95;&#xB4E4;&#xC740; <code>dataclass</code>&#xB97C; Django &#xD504;&#xB85C;&#xC81D;&#xD2B8;&#xC5D0; &#xD1B5;&#xD569;&#xD558;&#xB294; &#xC5EC;&#xB7EC; &#xBC29;&#xBC95; &#xC911; &#xC77C;&#xBD80;&#xC785;&#xB2C8;&#xB2E4;. &#xC0AC;&#xC6A9;&#xD560; &#xB54C;&#xC758; &#xD658;&#xACBD;&#xACFC; &#xC694;&#xAD6C; &#xC0AC;&#xD56D;&#xC5D0; &#xB530;&#xB77C; &#xC801;&#xC808;&#xD55C; &#xBC29;&#xBC95;&#xC744; &#xC120;&#xD0DD;&#xD558;&#xBA74; &#xB429;&#xB2C8;&#xB2E4;.</p>
+<h1 id="%EB%B3%84%EB%A1%9C-%EC%9E%A5%EC%A0%90%EC%9D%B4-%EC%97%86%EB%8A%94%EA%B2%83-%EA%B0%99%EC%95%84">&#xBCC4;&#xB85C; &#xC7A5;&#xC810;&#xC774; &#xC5C6;&#xB294;&#xAC83; &#xAC19;&#xC544;</h1>
+<p><code>dataclass</code>&#xC758; &#xC8FC;&#xC694; &#xC7A5;&#xC810;&#xC740; &#xBC18;&#xBCF5;&#xC801;&#xC778; &#xCF54;&#xB4DC;&#xC758; &#xC81C;&#xAC70;&#xC640; &#xB370;&#xC774;&#xD130; &#xAD6C;&#xC870;&#xC758; &#xBA85;&#xD655;&#xC131;&#xC785;&#xB2C8;&#xB2E4;. Django&#xC5D0;&#xC11C; <code>dataclass</code>&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xBA74; &#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xC740; &#xC774;&#xC810;&#xC774; &#xC788;&#xC744; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;:</p>
+<ol>
+<li><strong>&#xD0C0;&#xC785; &#xC548;&#xC815;&#xC131;</strong> : <code>dataclass</code>&#xC640; &#xD568;&#xAED8; &#xD0C0;&#xC785; &#xD78C;&#xD2B8;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xBA74;, &#xCF54;&#xB4DC;&#xC5D0; &#xD0C0;&#xC785;&#xC5D0; &#xAD00;&#xD55C; &#xBA85;&#xC2DC;&#xC801;&#xC778; &#xC815;&#xBCF4;&#xB97C; &#xCD94;&#xAC00;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774;&#xB85C;&#xC368; &#xCF54;&#xB4DC;&#xC758; &#xAC00;&#xB3C5;&#xC131;&#xC744; &#xB192;&#xC774;&#xACE0;, &#xC7A0;&#xC7AC;&#xC801;&#xC778; &#xC624;&#xB958;&#xB97C; &#xC904;&#xC77C; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</li>
+<li><strong>&#xB370;&#xC774;&#xD130;&#xC758; &#xBD88;&#xBCC0;&#xC131;</strong> : <code>dataclass</code>&#xC5D0;&#xC11C; <code>frozen=True</code> &#xC635;&#xC158;&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xBA74; &#xBD88;&#xBCC0; &#xB370;&#xC774;&#xD130; &#xAD6C;&#xC870;&#xB97C; &#xB9CC;&#xB4E4; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xBD88;&#xBCC0;&#xC131;&#xC740; &#xD568;&#xC218;&#xD615; &#xD504;&#xB85C;&#xADF8;&#xB798;&#xBC0D; &#xD328;&#xB7EC;&#xB2E4;&#xC784;&#xC5D0;&#xC11C; &#xAD8C;&#xC7A5;&#xB418;&#xB294; &#xD2B9;&#xC131;&#xC73C;&#xB85C;, &#xC608;&#xCE21; &#xAC00;&#xB2A5;&#xC131;&#xACFC; &#xB514;&#xBC84;&#xAE45; &#xC6A9;&#xC774;&#xC131;&#xC744; &#xB192;&#xC5EC;&#xC90D;&#xB2C8;&#xB2E4;.</li>
+<li><strong>&#xBA85;&#xD655;&#xD55C; API&#xC640; &#xACC4;&#xC57D;</strong> : <code>dataclass</code>&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xBA74;, &#xD2B9;&#xC815; &#xAE30;&#xB2A5;&#xC774;&#xB098; &#xC11C;&#xBE44;&#xC2A4;&#xC5D0;&#xC11C; &#xC694;&#xAD6C;&#xD558;&#xB294; &#xB370;&#xC774;&#xD130;&#xC758; &#xAD6C;&#xC870;&#xC640; &#xD615;&#xC2DD;&#xC744; &#xBA85;&#xD655;&#xD558;&#xAC8C; &#xC815;&#xC758;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</li>
+</ol>
+<p>&#xC774;&#xB7EC;&#xD55C; &#xC774;&#xC810;&#xC744; &#xACE0;&#xB824;&#xD558;&#xC5EC; Django&#xC640; <code>dataclass</code>&#xC758; &#xD1B5;&#xD569; &#xC608;&#xC81C;&#xB97C; &#xB2E4;&#xC2DC; &#xAC80;&#xD1A0;&#xD574;&#xBCF4;&#xACA0;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<h3 id="api-%EC%9D%91%EB%8B%B5-%EA%B5%AC%EC%A1%B0%ED%99%94%ED%95%98%EA%B8%B0-%EC%9E%AC%EA%B2%80%ED%86%A0">API &#xC751;&#xB2F5; &#xAD6C;&#xC870;&#xD654;&#xD558;&#xAE30; (&#xC7AC;&#xAC80;&#xD1A0;)</h3>
+<p>Django REST framework&#xC640; &#xAC19;&#xC740; API &#xAD6C;&#xCD95; &#xC2DC;, <code>dataclass</code>&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xBA74; &#xC751;&#xB2F5;&#xC758; &#xAD6C;&#xC870;&#xB97C; &#xBA85;&#xD655;&#xD558;&#xAC8C; &#xC815;&#xC758;&#xD558;&#xACE0; &#xD574;&#xB2F9; &#xAD6C;&#xC870;&#xC5D0; &#xB530;&#xB77C; &#xB370;&#xC774;&#xD130;&#xB97C; &#xC9C1;&#xB82C;&#xD654;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<pre><code class="language-python">
+from dataclasses import asdict
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
+@dataclass
+class UserResponse:
+    id: int
+    name: str
+    email: str
+
+@api_view([&apos;GET&apos;])
+def user_detail_view(request, user_id):
+    user = get_user_from_database(user_id)
+    response_data = UserResponse(id=user.id, name=user.name, email=user.email)
+    return Response(asdict(response_data))
+</code></pre>
+<p>&#xC774; &#xC608;&#xC81C;&#xC5D0;&#xC11C;&#xB294; <code>dataclass</code>&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xC5EC; API &#xC751;&#xB2F5;&#xC758; &#xAD6C;&#xC870;&#xB97C; &#xBA85;&#xD655;&#xD558;&#xAC8C; &#xC815;&#xC758;&#xD558;&#xC600;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774;&#xB85C; &#xC778;&#xD574; API&#xC758; &#xBC18;&#xD658;&#xAC12;&#xC758; &#xD615;&#xD0DC;&#xC640; &#xB0B4;&#xC6A9;&#xC5D0; &#xB300;&#xD55C; &#xBA85;&#xD655;&#xD55C; &#xACC4;&#xC57D;(contract)&#xC774; &#xC0DD;&#xC131;&#xB418;&#xC5C8;&#xACE0;, &#xC774;&#xB97C; &#xC774;&#xC6A9;&#xD574; &#xC9C1;&#xB82C;&#xD654; &#xACFC;&#xC815;&#xB3C4; &#xAC04;&#xACB0;&#xD558;&#xAC8C; &#xCC98;&#xB9AC;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<p>&#xBB3C;&#xB860;, &#xBAA8;&#xB4E0; &#xC0C1;&#xD669;&#xC5D0;&#xC11C; <code>dataclass</code>&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xB294; &#xAC83;&#xC774; &#xC774;&#xC810;&#xB9CC; &#xC788;&#xC9C0;&#xB294; &#xC54A;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC801;&#xC808;&#xD55C; &#xC0C1;&#xD669;&#xACFC; &#xD544;&#xC694;&#xC131;&#xC5D0; &#xB530;&#xB77C; &#xC0AC;&#xC6A9;&#xD558;&#xB294; &#xAC83;&#xC774; &#xC911;&#xC694;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h1 id="%EC%9D%91%EB%8B%B5%EC%9D%98-%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%81%B4%EB%9E%98%EC%8A%A4%EC%99%80-%EC%8B%9C%EB%A6%AC%EC%96%BC%EB%9D%BC%EC%9D%B4%EC%A0%80%EC%9D%98-%EC%97%AD%ED%95%A0-%EC%A4%91%EB%B3%B5">&#xC751;&#xB2F5;&#xC758; &#xB370;&#xC774;&#xD130;&#xD074;&#xB798;&#xC2A4;&#xC640; &#xC2DC;&#xB9AC;&#xC5BC;&#xB77C;&#xC774;&#xC800;&#xC758; &#xC5ED;&#xD560; &#xC911;&#xBCF5;</h1>
+<p>Django REST framework(DRF)&#xC5D0;&#xC11C;&#xB294; <code>Serializer</code>&#xB97C; &#xC81C;&#xACF5;&#xD558;&#xC5EC; &#xBCF5;&#xC7A1;&#xD55C; &#xCFFC;&#xB9AC;&#xC14B;, &#xBAA8;&#xB378; &#xC778;&#xC2A4;&#xD134;&#xC2A4;&#xB97C; JSON&#xACFC; &#xAC19;&#xC740; &#xD615;&#xC2DD;&#xC73C;&#xB85C; &#xC27D;&#xAC8C; &#xC9C1;&#xB82C;&#xD654;&#xD560; &#xC218; &#xC788;&#xAC8C; &#xD574;&#xC90D;&#xB2C8;&#xB2E4;. &#xC774;&#xB7EC;&#xD55C; &#xAE30;&#xB2A5;&#xC774; &#xC774;&#xBBF8; &#xC874;&#xC7AC;&#xD558;&#xAE30; &#xB54C;&#xBB38;&#xC5D0; <code>dataclass</code>&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xB294; &#xAC83;&#xC774; &#xC911;&#xBCF5;&#xC801;&#xC774;&#xAC70;&#xB098; &#xACFC;&#xB3C4;&#xD55C; &#xBD80;&#xBD84;&#xC774; &#xC788;&#xC744; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<p>&#xADF8;&#xB7EC;&#xB098; <code>dataclass</code>&#xB97C; API&#xC758; &#xC751;&#xB2F5; &#xAD6C;&#xC870;&#xC640; &#xAC19;&#xC740; &#xBD80;&#xBD84;&#xC5D0; &#xC0AC;&#xC6A9;&#xD558;&#xB294; &#xAC83;&#xC774; &#xBA87; &#xAC00;&#xC9C0; &#xC7A5;&#xC810;&#xC774; &#xC788;&#xC744; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;:</p>
+<ol>
+<li><strong>&#xD504;&#xB808;&#xC784;&#xC6CC;&#xD06C; &#xB3C5;&#xB9BD;&#xC131;</strong> : &#xCF54;&#xB4DC; &#xBCA0;&#xC774;&#xC2A4;&#xAC00; DRF&#xC5D0; &#xB108;&#xBB34; &#xC758;&#xC874;&#xC801;&#xC774;&#xC9C0; &#xC54A;&#xAC8C; &#xD558;&#xB824;&#xBA74;, &#xD45C;&#xC900; &#xB77C;&#xC774;&#xBE0C;&#xB7EC;&#xB9AC;&#xC778; <code>dataclass</code>&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xC5EC; &#xB370;&#xC774;&#xD130;&#xC758; &#xAD6C;&#xC870;&#xB97C; &#xC815;&#xC758;&#xD558;&#xACE0; &#xB2E4;&#xB978; &#xD504;&#xB808;&#xC784;&#xC6CC;&#xD06C;&#xB098; &#xB77C;&#xC774;&#xBE0C;&#xB7EC;&#xB9AC;&#xB85C; &#xC804;&#xD658;&#xD560; &#xB54C;&#xC758; &#xC720;&#xC5F0;&#xC131;&#xC744; &#xB192;&#xC77C; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</li>
+<li><strong>&#xD0C0;&#xC785; &#xCCB4;&#xD0B9;</strong> : <code>dataclass</code>&#xC640; &#xD568;&#xAED8; &#xD0C0;&#xC785; &#xD78C;&#xD2B8;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xBA74;, &#xB3C4;&#xAD6C;&#xB098; linters (&#xC608;: <code>mypy</code>)&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xC5EC; &#xCF54;&#xB4DC;&#xBCA0;&#xC774;&#xC2A4;&#xC758; &#xD0C0;&#xC785; &#xC548;&#xC815;&#xC131;&#xC744; &#xCCB4;&#xD06C;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</li>
+<li><strong>&#xAC04;&#xACB0;&#xD55C; &#xB370;&#xC774;&#xD130; &#xBCC0;&#xD658;</strong> : &#xBCF5;&#xC7A1;&#xD55C; &#xC2DC;&#xB9AC;&#xC5BC;&#xB77C;&#xC774;&#xC800; &#xB85C;&#xC9C1; &#xC5C6;&#xC774;&#xB3C4; &#xB370;&#xC774;&#xD130;&#xB97C; &#xBE60;&#xB974;&#xAC8C; &#xBCC0;&#xD658;&#xD558;&#xACE0;, &#xB2E4;&#xB978; &#xD568;&#xC218;&#xB098; &#xBA54;&#xC11C;&#xB4DC;&#xB85C; &#xC804;&#xB2EC;&#xD558;&#xB294; &#xB370; &#xC720;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</li>
+</ol>
+<p>&#xC608;&#xB97C; &#xB4E4;&#xC5B4;, DRF&#xC758; &#xC2DC;&#xB9AC;&#xC5BC;&#xB77C;&#xC774;&#xC800;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xC9C0; &#xC54A;&#xACE0;, <code>dataclass</code>&#xC640; &#xD568;&#xAED8; &#xB2E4;&#xB978; &#xC9C1;&#xB82C;&#xD654; &#xBC29;&#xBC95; (&#xC608;: <code>dataclasses.asdict()</code>, <code>json.dumps()</code>)&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xBA74; &#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xC774; &#xCC98;&#xB9AC;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;:</p>
+<pre><code class="language-python">
+from dataclasses import asdict
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
+@dataclass
+class UserResponse:
+    id: int
+    name: str
+    email: str
+
+@api_view([&apos;GET&apos;])
+def user_detail_view(request, user_id):
+    user = get_user_from_database(user_id)  # &#xAC00;&#xC815;
+    response_data = UserResponse(id=user.id, name=user.name, email=user.email)
+    return Response(asdict(response_data))
+</code></pre>
+<p>&#xADF8;&#xB807;&#xC9C0;&#xB9CC;, &#xB9CE;&#xC740; &#xACBD;&#xC6B0;&#xC5D0; DRF&#xC758; &#xC2DC;&#xB9AC;&#xC5BC;&#xB77C;&#xC774;&#xC800;&#xB294; &#xAC15;&#xB825;&#xD558;&#xACE0; &#xD6A8;&#xC728;&#xC801;&#xC785;&#xB2C8;&#xB2E4;. &#xB370;&#xC774;&#xD130; &#xC720;&#xD6A8;&#xC131; &#xAC80;&#xC0AC;, &#xBCF5;&#xC7A1;&#xD55C; &#xAD00;&#xACC4; &#xBC0F; &#xC911;&#xCCA9;&#xB41C; &#xB370;&#xC774;&#xD130; &#xAD6C;&#xC870;&#xB97C; &#xCC98;&#xB9AC;&#xD558;&#xACE0;, &#xCFFC;&#xB9AC; &#xCD5C;&#xC801;&#xD654;&#xC640; &#xAC19;&#xC740; &#xAE30;&#xB2A5;&#xC744; &#xC81C;&#xACF5;&#xD558;&#xAE30; &#xB54C;&#xBB38;&#xC5D0; &#xB9CE;&#xC740; Django &#xD504;&#xB85C;&#xC81D;&#xD2B8;&#xC5D0;&#xC11C;&#xB294; DRF&#xC758; &#xC2DC;&#xB9AC;&#xC5BC;&#xB77C;&#xC774;&#xC800;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xB294; &#xAC83;&#xC774; &#xC88B;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<p><code>dataclass</code>&#xC758; &#xC0AC;&#xC6A9; &#xC5EC;&#xBD80;&#xB294; &#xD504;&#xB85C;&#xC81D;&#xD2B8;&#xC758; &#xC694;&#xAD6C;&#xC0AC;&#xD56D;&#xACFC; &#xAC1C;&#xBC1C;&#xD300;&#xC758; &#xC120;&#xD638;&#xC5D0; &#xB530;&#xB77C; &#xB2EC;&#xB77C;&#xC9C8; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<!--kg-card-end: markdown-->]]></content:encoded></item><item><title><![CDATA[Domain-Driven Design 도메인 주도 개발]]></title><description><![CDATA[<!--kg-card-begin: markdown--><p>DDD&#xC5D0; &#xB300;&#xD574; ChatGPT&#xB300;&#xD654;&#xD55C; &#xB0B4;&#xC6A9;&#xC785;&#xB2C8;&#xB2E4;.</p>
 <h1 id="%EB%A0%88%EC%9D%B4%EC%96%B4%EC%97%90-%EB%8C%80%ED%95%B4">&#xB808;&#xC774;&#xC5B4;&#xC5D0; &#xB300;&#xD574;</h1>
 <p>&#xB3C4;&#xBA54;&#xC778; &#xC8FC;&#xB3C4; &#xAC1C;&#xBC1C;(Domain-Driven Design, DDD)&#xC740; &#xBCF5;&#xC7A1;&#xD55C; &#xC560;&#xD50C;&#xB9AC;&#xCF00;&#xC774;&#xC158;&#xC744; &#xAD6C;&#xCD95;&#xD560; &#xB54C; &#xC0AC;&#xC6A9;&#xB418;&#xB294; &#xC544;&#xD0A4;</p>]]></description><link>https://blog.midagedev.com/domain-driven-design/</link><guid isPermaLink="false">64d8d0694026ab0901842064</guid><dc:creator><![CDATA[kim hyeoncheol]]></dc:creator><pubDate>Sun, 13 Aug 2023 13:01:58 GMT</pubDate><content:encoded><![CDATA[<!--kg-card-begin: markdown--><p>DDD&#xC5D0; &#xB300;&#xD574; ChatGPT&#xB300;&#xD654;&#xD55C; &#xB0B4;&#xC6A9;&#xC785;&#xB2C8;&#xB2E4;.</p>
 <h1 id="%EB%A0%88%EC%9D%B4%EC%96%B4%EC%97%90-%EB%8C%80%ED%95%B4">&#xB808;&#xC774;&#xC5B4;&#xC5D0; &#xB300;&#xD574;</h1>

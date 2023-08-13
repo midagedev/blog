@@ -4,30 +4,59 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>애매한중년개발자 blog</title>
+    <title>python의 dataclass</title>
     <link rel="stylesheet" href="/assets/built/screen.css?v=5c7a99c270">
 
-    <meta name="description" content="개발 관련 메모장">
-    <link rel="canonical" href="https://blog.midagedev.com/">
+    <link rel="canonical" href="https://blog.midagedev.com/python-dataclass/">
     <meta name="referrer" content="no-referrer-when-downgrade">
-    <link rel="next" href="https://blog.midagedev.com/page/2/">
     
     <meta property="og:site_name" content="애매한중년개발자 blog">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="애매한중년개발자 blog">
-    <meta property="og:description" content="개발 관련 메모장">
-    <meta property="og:url" content="https://blog.midagedev.com/">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="python의 dataclass">
+    <meta property="og:description" content="데이터클래스에 대해 알려줘
+
+
+dataclass는 Python 3.7부터 표준 라이브러리인 dataclasses 모듈에 추가된 데코레이터입니다. 기본적으로 dataclass는 클래스 내의 필드들을 기반으로 초기화, 비교, 출력 메서드 등을 자동으로 생성해 줍니다. dataclass를 사용하면 반복적인 코드를 작성하지 않고도 깔끔하게 데이터를 저장하고 사용하는 클래스를 작성할 수 있습니다.
+
+
+예제를 통해 이해해봅시다:
+
+
+
+from dataclasses import dataclass
+
+@dataclass
+class">
+    <meta property="og:url" content="https://blog.midagedev.com/python-dataclass/">
+    <meta property="article:published_time" content="2023-08-13T13:22:48.000Z">
+    <meta property="article:modified_time" content="2023-08-13T13:22:48.000Z">
     <meta property="article:publisher" content="https://www.facebook.com/ghost">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="애매한중년개발자 blog">
-    <meta name="twitter:description" content="개발 관련 메모장">
-    <meta name="twitter:url" content="https://blog.midagedev.com/">
+    <meta name="twitter:title" content="python의 dataclass">
+    <meta name="twitter:description" content="데이터클래스에 대해 알려줘
+
+
+dataclass는 Python 3.7부터 표준 라이브러리인 dataclasses 모듈에 추가된 데코레이터입니다. 기본적으로 dataclass는 클래스 내의 필드들을 기반으로 초기화, 비교, 출력 메서드 등을 자동으로 생성해 줍니다. dataclass를 사용하면 반복적인 코드를 작성하지 않고도 깔끔하게 데이터를 저장하고 사용하는 클래스를 작성할 수 있습니다.
+
+
+예제를 통해 이해해봅시다:
+
+
+
+from dataclasses import dataclass
+
+@dataclass
+class">
+    <meta name="twitter:url" content="https://blog.midagedev.com/python-dataclass/">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="kim hyeoncheol">
     <meta name="twitter:site" content="@ghost">
+    <meta name="twitter:creator" content="@narx17">
     
     <script type="application/ld+json">
 {
     "@context": "https://schema.org",
-    "@type": "WebSite",
+    "@type": "Article",
     "publisher": {
         "@type": "Organization",
         "name": "애매한중년개발자 blog",
@@ -37,9 +66,26 @@
             "url": "https://blog.midagedev.com/favicon.ico"
         }
     },
-    "url": "https://blog.midagedev.com/",
-    "mainEntityOfPage": "https://blog.midagedev.com/",
-    "description": "개발 관련 메모장"
+    "author": {
+        "@type": "Person",
+        "name": "kim hyeoncheol",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://blog.midagedev.com/content/images/2023/07/--.jpg",
+            "width": 772,
+            "height": 714
+        },
+        "url": "https://blog.midagedev.com/author/kim/",
+        "sameAs": [
+            "https://twitter.com/narx17"
+        ]
+    },
+    "headline": "python의 dataclass",
+    "url": "https://blog.midagedev.com/python-dataclass/",
+    "datePublished": "2023-08-13T13:22:48.000Z",
+    "dateModified": "2023-08-13T13:22:48.000Z",
+    "description": "데이터클래스에 대해 알려줘\n\n\ndataclass는 Python 3.7부터 표준 라이브러리인 dataclasses 모듈에 추가된 데코레이터입니다. 기본적으로 dataclass는 클래스 내의 필드들을 기반으로 초기화, 비교, 출력 메서드 등을 자동으로 생성해 줍니다. dataclass를 사용하면 반복적인 코드를 작성하지 않고도 깔끔하게 데이터를 저장하고 사용하는 클래스를 작성할 수 있습니다.\n\n\n예제를 통해 이해해봅시다:\n\n\n\nfrom dataclasses import dataclass\n\n@dataclass\nclass Point:\n    x: float\n    y: float\n    z: float &#x3D; 0.0  # 기본값 설정도 가능\n\n\n\n위의 예제에서 Point 클래스는 x, y, z 세 개의 필드를 가집니다. dataclass 덕분에 아래와 같은 기능들이 자동으로 제공됩니다:\n\n\n * 초기화 메서드 __init__\n * 표현 메서드 __repr__\n * 비교 메서드 __eq__\n\n\n",
+    "mainEntityOfPage": "https://blog.midagedev.com/python-dataclass/"
 }
     </script>
 
@@ -53,7 +99,7 @@
     <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=5c7a99c270">
 </head>
 
-<body class="home-template is-head-left-logo has-serif-title has-serif-body">
+<body class="post-template is-head-left-logo has-serif-title has-serif-body">
 <div class="gh-site">
 
     <header id="gh-head" class="gh-head gh-outer">
@@ -70,7 +116,7 @@
 
             <nav class="gh-head-menu">
                 <ul class="nav">
-    <li class="nav-home nav-current"><a href="https://blog.midagedev.com/">HOME</a></li>
+    <li class="nav-home"><a href="https://blog.midagedev.com/">HOME</a></li>
     <li class="nav-about"><a href="https://blog.midagedev.com/about/">ABOUT</a></li>
 </ul>
 
@@ -83,11 +129,11 @@
     </header>
 
     
+
 <main id="gh-main" class="gh-main">
-        <article class="gh-article post no-image">
-            <header class="gh-article-header gh-canvas">
+    <article class="gh-article post no-image">
+        <header class="gh-article-header gh-canvas">
     <div class="gh-article-meta">
-            <span class="gh-article-label">Latest issue</span>
         <time class="gh-article-date" datetime="2023-08-13">2023년 8월 13일</time>
     </div>
 
@@ -326,8 +372,10 @@ def user_detail_view(request, user_id):
         <div class="gh-navigation-next">
         </div>
     </nav>
-</footer>        </article>
+</footer>    </article>
 </main>
+
+
 
 
     <footer class="gh-foot no-menu gh-outer">
@@ -343,7 +391,47 @@ def user_detail_view(request, user_id):
 
 </div>
 
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
 
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
 <script src="/assets/built/main.min.js?v=5c7a99c270"></script>
 
 
