@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>시계열 예측모델 ARIMA와 LSTM</title>
-    <link rel="stylesheet" href="/assets/built/screen.css?v=5c7a99c270">
+    <link rel="stylesheet" href="/assets/built/screen.css?v=d141b747f3">
 
     <link rel="canonical" href="https://blog.midagedev.com/arima-vs-lstm/">
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -73,20 +73,22 @@
     <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="a3bcd90eef780e8e2967d52431" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://blog.midagedev.com/" crossorigin="anonymous"></script>
     
     <link href="https://blog.midagedev.com/webmentions/receive/" rel="webmention">
-    <script defer src="/public/cards.min.js?v=5c7a99c270"></script><style>:root {--ghost-accent-color: #28821c;}</style>
-    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=5c7a99c270">
+    <script defer src="/public/cards.min.js?v=d141b747f3"></script><style>:root {--ghost-accent-color: #28821c;}</style>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=d141b747f3">
 </head>
 
-<body class="post-template is-head-left-logo has-serif-title has-serif-body">
+<body class="post-template is-head-stacked has-serif-body">
 <div class="gh-site">
 
     <header id="gh-head" class="gh-head gh-outer">
-        <div class="gh-head-inner">
+        <div class="gh-head-inner gh-inner">
             <div class="gh-head-brand">
                 <div class="gh-head-brand-wrapper">
+                    
                     <a class="gh-head-logo" href="https://blog.midagedev.com">
                             애매한중년개발자 blog
                     </a>
+                    
                 </div>
                 <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
                 <button class="gh-burger"></button>
@@ -98,76 +100,68 @@
     <li class="nav-about"><a href="https://blog.midagedev.com/about/">ABOUT</a></li>
 </ul>
 
+                        <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
             </nav>
 
             <div class="gh-head-actions">
-                        <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
             </div>
         </div>
     </header>
 
     
+<main class="gh-main">
+        <article class="gh-article post no-image">
 
-<main id="gh-main" class="gh-main">
-    <article class="gh-article post no-image">
-        <header class="gh-article-header gh-canvas">
-    <div class="gh-article-meta">
-        <time class="gh-article-date" datetime="2023-07-18">2023년 7월 18일</time>
-    </div>
+            <header class="gh-article-header gh-canvas">
 
-    <h1 class="gh-article-title">시계열 예측모델 ARIMA와 LSTM</h1>
+                <h1 class="gh-article-title">시계열 예측모델 ARIMA와 LSTM</h1>
 
-</header>
+                    <aside class="gh-article-sidebar">
 
-
-<section class="gh-content gh-canvas">
-    <p>ARIMA (Autoregressive Integrated Moving Average)와 LSTM (Long Short-Term Memory)은 두 가지 주요 시계열 예측 알고리즘입니다. 그러나 이 두 알고리즘은 사용 방법, 구조, 그리고 동작 방식에서 꽤 많은 차이점이 있습니다.</p><ol><li><strong>모델 타입</strong>: ARIMA는 통계 기반의 선형 모델입니다. 시계열의 패턴을 인식하고 이를 사용하여 미래 값을 예측하는데, 자기 상관성이 있는 선형 시계열 데이터에 적합합니다. 반면에 LSTM은 인공신경망의 한 종류로, 비선형 패턴을 학습하고 복잡한 시계열 데이터에서 더욱 효과적으로 작동합니다.</li><li><strong>시간 의존성</strong>: ARIMA는 고정된 시간 창(window) 내에서만 의존성을 인식할 수 있습니다. 즉, 창의 크기가 너무 커지면 모델의 성능이 저하될 수 있습니다. 반면에 LSTM은 "장기 의존성" 문제를 해결하기 위해 설계되었으며, 장기적인 의존성을 가진 데이터를 처리하는 데 더욱 유리합니다.</li><li><strong>데이터 전처리</strong>: ARIMA는 정상 상태의 데이터를 필요로 합니다. 즉, 데이터가 일정한 평균과 분산을 가져야 합니다. 이를 위해 종종 차분(differencing)이나 변환(transformation)과 같은 전처리 단계가 필요합니다. LSTM은 이러한 전처리 과정이 필수적이지는 않지만, 종종 데이터의 스케일링이 필요할 수 있습니다.</li><li><strong>학습 시간</strong>: LSTM은 일반적으로 ARIMA보다 학습 시간이 더 길다. LSTM은 비선형적인 특징을 학습하고, 이를 위해 더 많은 파라미터를 학습해야 하기 때문입니다.</li><li><strong>해석 가능성</strong>: ARIMA 모델의 장점 중 하나는 그 결과를 해석하는 데 있어서의 명확성입니다. ARIMA 모델의 계수는 통계적으로 의미를 가질 수 있습니다. 반면에 LSTM은 일반적으로 '블랙박스' 모델로 여겨지며, 이는 그들의 내부 작동 방식을 이해하거나 설명하는 것이 어렵다는 의미입니다.</li></ol><p>이러한 차이점에도 불구하고, ARIMA와 LSTM 모두 시계열 데이터를 다루는 데 유용한 도구입니다. 어떤 알고리즘이 가장 적합한지는 문제의 특성, 사용 가능한 데이터, 그리고 특정 작업에 대한 요구 사항에 따라 달라집니다.</p>
-</section>
-
-
-<footer class="gh-article-footer gh-canvas">
-    <nav class="gh-navigation">
-        <div class="gh-navigation-previous">
-                <a class="gh-navigation-link u-hover reverse" href="/django-preform-create/">
-                    <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
-    <path d="M20.547 22.107L14.44 16l6.107-6.12L18.667 8l-8 8 8 8 1.88-1.893z"></path>
-</svg>
-</span>
-                    <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
-    <path d="M20.547 22.107L14.44 16l6.107-6.12L18.667 8l-8 8 8 8 1.88-1.893z"></path>
-</svg>
-</span>
-                    Previous<span class="gh-navigation-hide">&nbsp;issue</span>
+        <div class="gh-author-image-list">
+                <a class="gh-author-image" href="/author/kim/">
+                        <img src="https://blog.midagedev.com/content/images/2023/07/--.jpg" alt="kim hyeoncheol">
                 </a>
         </div>
 
-        <a class="gh-navigation-middle" href="/page/2"><span>Browse</span> all issues</a>
-
-        <div class="gh-navigation-next">
-                <a class="gh-navigation-link u-hover" href="/more-what-less-how/">
-                    Next<span class="gh-navigation-hide">&nbsp;issue</span>
-                    <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
-    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
-</svg></span>
-                    <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
-    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
-</svg></span>
-                </a>
+        <div class="gh-author-name-list">
+                <h4 class="gh-author-name">
+                    <a href="/author/kim/">kim hyeoncheol</a>
+                </h4>
+                
         </div>
-    </nav>
-</footer>    </article>
-</main>
 
-
-
-
-    <footer class="gh-foot no-menu gh-outer">
-        <div class="gh-foot-inner gh-inner">
-            <div class="gh-copyright">
-                애매한중년개발자 blog © 2023
+        <div class="gh-article-meta">
+            <div class="gh-article-meta-inner">
+                <time class="gh-article-date" datetime="2023-07-18">2023년 7월 18일</time>
+                    <span class="gh-article-meta-sep"></span>
+                    <span class="gh-article-length">2 min</span>
             </div>
-            <div class="gh-powered-by">
-                <a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a>
+        </div>
+
+    </aside>
+
+
+                            </header>
+
+            <section class="gh-content gh-canvas">
+                <p>ARIMA (Autoregressive Integrated Moving Average)와 LSTM (Long Short-Term Memory)은 두 가지 주요 시계열 예측 알고리즘입니다. 그러나 이 두 알고리즘은 사용 방법, 구조, 그리고 동작 방식에서 꽤 많은 차이점이 있습니다.</p><ol><li><strong>모델 타입</strong>: ARIMA는 통계 기반의 선형 모델입니다. 시계열의 패턴을 인식하고 이를 사용하여 미래 값을 예측하는데, 자기 상관성이 있는 선형 시계열 데이터에 적합합니다. 반면에 LSTM은 인공신경망의 한 종류로, 비선형 패턴을 학습하고 복잡한 시계열 데이터에서 더욱 효과적으로 작동합니다.</li><li><strong>시간 의존성</strong>: ARIMA는 고정된 시간 창(window) 내에서만 의존성을 인식할 수 있습니다. 즉, 창의 크기가 너무 커지면 모델의 성능이 저하될 수 있습니다. 반면에 LSTM은 "장기 의존성" 문제를 해결하기 위해 설계되었으며, 장기적인 의존성을 가진 데이터를 처리하는 데 더욱 유리합니다.</li><li><strong>데이터 전처리</strong>: ARIMA는 정상 상태의 데이터를 필요로 합니다. 즉, 데이터가 일정한 평균과 분산을 가져야 합니다. 이를 위해 종종 차분(differencing)이나 변환(transformation)과 같은 전처리 단계가 필요합니다. LSTM은 이러한 전처리 과정이 필수적이지는 않지만, 종종 데이터의 스케일링이 필요할 수 있습니다.</li><li><strong>학습 시간</strong>: LSTM은 일반적으로 ARIMA보다 학습 시간이 더 길다. LSTM은 비선형적인 특징을 학습하고, 이를 위해 더 많은 파라미터를 학습해야 하기 때문입니다.</li><li><strong>해석 가능성</strong>: ARIMA 모델의 장점 중 하나는 그 결과를 해석하는 데 있어서의 명확성입니다. ARIMA 모델의 계수는 통계적으로 의미를 가질 수 있습니다. 반면에 LSTM은 일반적으로 '블랙박스' 모델로 여겨지며, 이는 그들의 내부 작동 방식을 이해하거나 설명하는 것이 어렵다는 의미입니다.</li></ol><p>이러한 차이점에도 불구하고, ARIMA와 LSTM 모두 시계열 데이터를 다루는 데 유용한 도구입니다. 어떤 알고리즘이 가장 적합한지는 문제의 특성, 사용 가능한 데이터, 그리고 특정 작업에 대한 요구 사항에 따라 달라집니다.</p>
+            </section>
+
+        </article>
+
+    
+        </main>
+
+    <footer class="gh-foot gh-outer">
+        <div class="gh-foot-inner gh-inner">
+
+            <nav class="gh-foot-menu">
+                
+            </nav>
+
+            <div class="gh-copyright">
+                    애매한중년개발자 blog © 2023. Powered by <a href="https://ghost.org/" target="_blank" rel="noopener">Ghost</a>
             </div>
         </div>
     </footer>
@@ -215,7 +209,7 @@
         </div>
     </div>
 </div>
-<script src="/assets/built/main.min.js?v=5c7a99c270"></script>
+<script src="/assets/built/main.min.js?v=d141b747f3"></script>
 
 
 

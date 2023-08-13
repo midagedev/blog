@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>python의 dataclass</title>
-    <link rel="stylesheet" href="/assets/built/screen.css?v=5c7a99c270">
+    <link rel="stylesheet" href="/assets/built/screen.css?v=d141b747f3">
 
     <link rel="canonical" href="https://blog.midagedev.com/python-dataclass/">
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -95,20 +95,22 @@ class">
     <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="a3bcd90eef780e8e2967d52431" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://blog.midagedev.com/" crossorigin="anonymous"></script>
     
     <link href="https://blog.midagedev.com/webmentions/receive/" rel="webmention">
-    <script defer src="/public/cards.min.js?v=5c7a99c270"></script><style>:root {--ghost-accent-color: #28821c;}</style>
-    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=5c7a99c270">
+    <script defer src="/public/cards.min.js?v=d141b747f3"></script><style>:root {--ghost-accent-color: #28821c;}</style>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=d141b747f3">
 </head>
 
-<body class="post-template is-head-left-logo has-serif-title has-serif-body">
+<body class="post-template is-head-stacked has-serif-body">
 <div class="gh-site">
 
     <header id="gh-head" class="gh-head gh-outer">
-        <div class="gh-head-inner">
+        <div class="gh-head-inner gh-inner">
             <div class="gh-head-brand">
                 <div class="gh-head-brand-wrapper">
+                    
                     <a class="gh-head-logo" href="https://blog.midagedev.com">
                             애매한중년개발자 blog
                     </a>
+                    
                 </div>
                 <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
                 <button class="gh-burger"></button>
@@ -120,30 +122,52 @@ class">
     <li class="nav-about"><a href="https://blog.midagedev.com/about/">ABOUT</a></li>
 </ul>
 
+                        <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
             </nav>
 
             <div class="gh-head-actions">
-                        <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
             </div>
         </div>
     </header>
 
     
+<main class="gh-main">
+        <article class="gh-article post no-image">
 
-<main id="gh-main" class="gh-main">
-    <article class="gh-article post no-image">
-        <header class="gh-article-header gh-canvas">
-    <div class="gh-article-meta">
-        <time class="gh-article-date" datetime="2023-08-13">2023년 8월 13일</time>
-    </div>
+            <header class="gh-article-header gh-canvas">
 
-    <h1 class="gh-article-title">python의 dataclass</h1>
+                <h1 class="gh-article-title">python의 dataclass</h1>
 
-</header>
+                    <aside class="gh-article-sidebar">
+
+        <div class="gh-author-image-list">
+                <a class="gh-author-image" href="/author/kim/">
+                        <img src="https://blog.midagedev.com/content/images/2023/07/--.jpg" alt="kim hyeoncheol">
+                </a>
+        </div>
+
+        <div class="gh-author-name-list">
+                <h4 class="gh-author-name">
+                    <a href="/author/kim/">kim hyeoncheol</a>
+                </h4>
+                
+        </div>
+
+        <div class="gh-article-meta">
+            <div class="gh-article-meta-inner">
+                <time class="gh-article-date" datetime="2023-08-13">2023년 8월 13일</time>
+                    <span class="gh-article-meta-sep"></span>
+                    <span class="gh-article-length">9 min</span>
+            </div>
+        </div>
+
+    </aside>
 
 
-<section class="gh-content gh-canvas">
-    <!--kg-card-begin: markdown--><h1 id="%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%81%B4%EB%9E%98%EC%8A%A4%EC%97%90-%EB%8C%80%ED%95%B4-%EC%95%8C%EB%A0%A4%EC%A4%98">데이터클래스에 대해 알려줘</h1>
+                            </header>
+
+            <section class="gh-content gh-canvas">
+                <!--kg-card-begin: markdown--><h1 id="%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%81%B4%EB%9E%98%EC%8A%A4%EC%97%90-%EB%8C%80%ED%95%B4-%EC%95%8C%EB%A0%A4%EC%A4%98">데이터클래스에 대해 알려줘</h1>
 <p><code>dataclass</code>는 Python 3.7부터 표준 라이브러리인 <code>dataclasses</code> 모듈에 추가된 데코레이터입니다. 기본적으로 <code>dataclass</code>는 클래스 내의 필드들을 기반으로 초기화, 비교, 출력 메서드 등을 자동으로 생성해 줍니다. <code>dataclass</code>를 사용하면 반복적인 코드를 작성하지 않고도 깔끔하게 데이터를 저장하고 사용하는 클래스를 작성할 수 있습니다.</p>
 <p>예제를 통해 이해해봅시다:</p>
 <pre><code class="language-python">
@@ -348,43 +372,22 @@ def user_detail_view(request, user_id):
 <p>그렇지만, 많은 경우에 DRF의 시리얼라이저는 강력하고 효율적입니다. 데이터 유효성 검사, 복잡한 관계 및 중첩된 데이터 구조를 처리하고, 쿼리 최적화와 같은 기능을 제공하기 때문에 많은 Django 프로젝트에서는 DRF의 시리얼라이저를 사용하는 것이 좋습니다.</p>
 <p><code>dataclass</code>의 사용 여부는 프로젝트의 요구사항과 개발팀의 선호에 따라 달라질 수 있습니다.</p>
 <!--kg-card-end: markdown-->
-</section>
+            </section>
 
+        </article>
 
-<footer class="gh-article-footer gh-canvas">
-    <nav class="gh-navigation">
-        <div class="gh-navigation-previous">
-                <a class="gh-navigation-link u-hover reverse" href="/domain-driven-design/">
-                    <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
-    <path d="M20.547 22.107L14.44 16l6.107-6.12L18.667 8l-8 8 8 8 1.88-1.893z"></path>
-</svg>
-</span>
-                    <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
-    <path d="M20.547 22.107L14.44 16l6.107-6.12L18.667 8l-8 8 8 8 1.88-1.893z"></path>
-</svg>
-</span>
-                    Previous<span class="gh-navigation-hide">&nbsp;issue</span>
-                </a>
-        </div>
+    
+        </main>
 
-        <a class="gh-navigation-middle" href="/page/2"><span>Browse</span> all issues</a>
-
-        <div class="gh-navigation-next">
-        </div>
-    </nav>
-</footer>    </article>
-</main>
-
-
-
-
-    <footer class="gh-foot no-menu gh-outer">
+    <footer class="gh-foot gh-outer">
         <div class="gh-foot-inner gh-inner">
+
+            <nav class="gh-foot-menu">
+                
+            </nav>
+
             <div class="gh-copyright">
-                애매한중년개발자 blog © 2023
-            </div>
-            <div class="gh-powered-by">
-                <a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a>
+                    애매한중년개발자 blog © 2023. Powered by <a href="https://ghost.org/" target="_blank" rel="noopener">Ghost</a>
             </div>
         </div>
     </footer>
@@ -432,7 +435,7 @@ def user_detail_view(request, user_id):
         </div>
     </div>
 </div>
-<script src="/assets/built/main.min.js?v=5c7a99c270"></script>
+<script src="/assets/built/main.min.js?v=d141b747f3"></script>
 
 
 

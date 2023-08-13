@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>django viewset에서 create와 perform_create의 차이</title>
-    <link rel="stylesheet" href="/assets/built/screen.css?v=5c7a99c270">
+    <link rel="stylesheet" href="/assets/built/screen.css?v=d141b747f3">
 
     <link rel="canonical" href="https://blog.midagedev.com/django-preform-create/">
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -73,20 +73,22 @@
     <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="a3bcd90eef780e8e2967d52431" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://blog.midagedev.com/" crossorigin="anonymous"></script>
     
     <link href="https://blog.midagedev.com/webmentions/receive/" rel="webmention">
-    <script defer src="/public/cards.min.js?v=5c7a99c270"></script><style>:root {--ghost-accent-color: #28821c;}</style>
-    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=5c7a99c270">
+    <script defer src="/public/cards.min.js?v=d141b747f3"></script><style>:root {--ghost-accent-color: #28821c;}</style>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=d141b747f3">
 </head>
 
-<body class="post-template is-head-left-logo has-serif-title has-serif-body">
+<body class="post-template is-head-stacked has-serif-body">
 <div class="gh-site">
 
     <header id="gh-head" class="gh-head gh-outer">
-        <div class="gh-head-inner">
+        <div class="gh-head-inner gh-inner">
             <div class="gh-head-brand">
                 <div class="gh-head-brand-wrapper">
+                    
                     <a class="gh-head-logo" href="https://blog.midagedev.com">
                             애매한중년개발자 blog
                     </a>
+                    
                 </div>
                 <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
                 <button class="gh-burger"></button>
@@ -98,30 +100,52 @@
     <li class="nav-about"><a href="https://blog.midagedev.com/about/">ABOUT</a></li>
 </ul>
 
+                        <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
             </nav>
 
             <div class="gh-head-actions">
-                        <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
             </div>
         </div>
     </header>
 
     
+<main class="gh-main">
+        <article class="gh-article post no-image">
 
-<main id="gh-main" class="gh-main">
-    <article class="gh-article post no-image">
-        <header class="gh-article-header gh-canvas">
-    <div class="gh-article-meta">
-        <time class="gh-article-date" datetime="2023-07-18">2023년 7월 18일</time>
-    </div>
+            <header class="gh-article-header gh-canvas">
 
-    <h1 class="gh-article-title">django viewset에서 create와 perform_create의 차이</h1>
+                <h1 class="gh-article-title">django viewset에서 create와 perform_create의 차이</h1>
 
-</header>
+                    <aside class="gh-article-sidebar">
+
+        <div class="gh-author-image-list">
+                <a class="gh-author-image" href="/author/kim/">
+                        <img src="https://blog.midagedev.com/content/images/2023/07/--.jpg" alt="kim hyeoncheol">
+                </a>
+        </div>
+
+        <div class="gh-author-name-list">
+                <h4 class="gh-author-name">
+                    <a href="/author/kim/">kim hyeoncheol</a>
+                </h4>
+                
+        </div>
+
+        <div class="gh-article-meta">
+            <div class="gh-article-meta-inner">
+                <time class="gh-article-date" datetime="2023-07-18">2023년 7월 18일</time>
+                    <span class="gh-article-meta-sep"></span>
+                    <span class="gh-article-length">2 min</span>
+            </div>
+        </div>
+
+    </aside>
 
 
-<section class="gh-content gh-canvas">
-    <p><code>Django REST Framework</code>에서 <code>ViewSet</code>은 API 로직을 구성하는 방법을 제공합니다. <code>ViewSet</code>에서 사용하는 주요 메서드 중 두 가지인 <code>create</code>와 <code>perform_create</code>에는 명확한 차이가 있습니다.</p><ul><li><code>create</code>는 <code>POST</code> 요청이 들어왔을 때 데이터를 생성하는 뷰의 로직입니다. <code>request</code> 객체를 받아 해당 데이터를 이용해 새로운 인스턴스를 생성하고, 응답을 리턴하는 로직을 포함합니다. <code>create</code> 메서드는 API 요청에 대한 전체적인 흐름을 담당합니다.</li><li>반면, <code>perform_create</code>는 <code>create</code>가 진행되는 과정 중, 실제로 새로운 데이터를 데이터베이스에 저장하는 역할을 합니다. <code>perform_create</code> 메서드에는 직접적으로 <code>request</code> 객체를 넘겨받지 않고, <code>create</code>로부터 전달받은 serializer와 <code>validated_data</code>를 이용해 데이터를 저장합니다.</li></ul><p>즉, <code>create</code> 메서드가 전체적인 생성 흐름을 담당하는 반면, <code>perform_create</code>는 그 과정 중 데이터 저장에 집중하는 역할을 합니다.</p><p>이러한 구조는 코드의 모듈화와 재사용성을 향상시키며, 필요에 따라 <code>perform_create</code>를 오버라이드하면 <code>create</code> 메서드의 흐름은 그대로 유지하면서 데이터 저장 방식만을 변경하는 등의 유연한 커스터마이징을 가능하게 합니다.</p><pre><code class="language-python">from rest_framework import viewsets, status
+                            </header>
+
+            <section class="gh-content gh-canvas">
+                <p><code>Django REST Framework</code>에서 <code>ViewSet</code>은 API 로직을 구성하는 방법을 제공합니다. <code>ViewSet</code>에서 사용하는 주요 메서드 중 두 가지인 <code>create</code>와 <code>perform_create</code>에는 명확한 차이가 있습니다.</p><ul><li><code>create</code>는 <code>POST</code> 요청이 들어왔을 때 데이터를 생성하는 뷰의 로직입니다. <code>request</code> 객체를 받아 해당 데이터를 이용해 새로운 인스턴스를 생성하고, 응답을 리턴하는 로직을 포함합니다. <code>create</code> 메서드는 API 요청에 대한 전체적인 흐름을 담당합니다.</li><li>반면, <code>perform_create</code>는 <code>create</code>가 진행되는 과정 중, 실제로 새로운 데이터를 데이터베이스에 저장하는 역할을 합니다. <code>perform_create</code> 메서드에는 직접적으로 <code>request</code> 객체를 넘겨받지 않고, <code>create</code>로부터 전달받은 serializer와 <code>validated_data</code>를 이용해 데이터를 저장합니다.</li></ul><p>즉, <code>create</code> 메서드가 전체적인 생성 흐름을 담당하는 반면, <code>perform_create</code>는 그 과정 중 데이터 저장에 집중하는 역할을 합니다.</p><p>이러한 구조는 코드의 모듈화와 재사용성을 향상시키며, 필요에 따라 <code>perform_create</code>를 오버라이드하면 <code>create</code> 메서드의 흐름은 그대로 유지하면서 데이터 저장 방식만을 변경하는 등의 유연한 커스터마이징을 가능하게 합니다.</p><pre><code class="language-python">from rest_framework import viewsets, status
 from rest_framework.response import Response
 from .serializers import YourModelSerializer
 from .models import YourModel
@@ -140,52 +164,22 @@ class YourModelViewSet(viewsets.ModelViewSet):
         # 여기에서 실제로 모델 인스턴스를 생성합니다.
         serializer.save()
 </code></pre><p>위 코드에서는 <code>create</code> 메서드에서 먼저 요청된 데이터(<code>request.data</code>)를 serializer를 통해 검증(<code>is_valid()</code>)합니다. 만약 검증이 성공하면, <code>perform_create</code> 메서드를 통해 데이터를 실제로 저장하고, 성공적으로 생성되었다는 응답을 보냅니다.</p><p><code>perform_create</code>는 serializer의 <code>save</code> 메서드를 호출하여 실제 데이터를 데이터베이스에 저장합니다. 필요에 따라 이 부분을 오버라이드하여 특정 로직을 추가하거나 변경할 수 있습니다.</p>
-</section>
+            </section>
 
+        </article>
 
-<footer class="gh-article-footer gh-canvas">
-    <nav class="gh-navigation">
-        <div class="gh-navigation-previous">
-                <a class="gh-navigation-link u-hover reverse" href="/commonjs-is-not-going-away/">
-                    <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
-    <path d="M20.547 22.107L14.44 16l6.107-6.12L18.667 8l-8 8 8 8 1.88-1.893z"></path>
-</svg>
-</span>
-                    <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
-    <path d="M20.547 22.107L14.44 16l6.107-6.12L18.667 8l-8 8 8 8 1.88-1.893z"></path>
-</svg>
-</span>
-                    Previous<span class="gh-navigation-hide">&nbsp;issue</span>
-                </a>
-        </div>
+    
+        </main>
 
-        <a class="gh-navigation-middle" href="/page/2"><span>Browse</span> all issues</a>
-
-        <div class="gh-navigation-next">
-                <a class="gh-navigation-link u-hover" href="/arima-vs-lstm/">
-                    Next<span class="gh-navigation-hide">&nbsp;issue</span>
-                    <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
-    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
-</svg></span>
-                    <span class="u-hover-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor">
-    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
-</svg></span>
-                </a>
-        </div>
-    </nav>
-</footer>    </article>
-</main>
-
-
-
-
-    <footer class="gh-foot no-menu gh-outer">
+    <footer class="gh-foot gh-outer">
         <div class="gh-foot-inner gh-inner">
+
+            <nav class="gh-foot-menu">
+                
+            </nav>
+
             <div class="gh-copyright">
-                애매한중년개발자 blog © 2023
-            </div>
-            <div class="gh-powered-by">
-                <a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a>
+                    애매한중년개발자 blog © 2023. Powered by <a href="https://ghost.org/" target="_blank" rel="noopener">Ghost</a>
             </div>
         </div>
     </footer>
@@ -233,7 +227,7 @@ class YourModelViewSet(viewsets.ModelViewSet):
         </div>
     </div>
 </div>
-<script src="/assets/built/main.min.js?v=5c7a99c270"></script>
+<script src="/assets/built/main.min.js?v=d141b747f3"></script>
 
 
 
