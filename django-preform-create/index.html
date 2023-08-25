@@ -13,18 +13,22 @@
     <meta property="og:site_name" content="애매한중년개발자 blog">
     <meta property="og:type" content="article">
     <meta property="og:title" content="django viewset에서 create와 perform_create의 차이">
-    <meta property="og:description" content="Django REST Framework에서 ViewSet은 API 로직을 구성하는 방법을 제공합니다. ViewSet에서 사용하는 주요 메서드 중 두 가지인 create와 perform_create에는 명확한 차이가 있습니다.
+    <meta property="og:description" content="chatgpt와의 대화입니다.
 
- * create는 POST 요청이 들어왔을 때 데이터를 생성하는 뷰의 로직입니다. request 객체를 받아 해당 데이터를 이용해 새로운 인스턴스를 생성하고, 응답을 리턴하는 로직을 포함합니다. create 메서드는 API 요청에 대한 전체적인">
+Django REST Framework에서 ViewSet은 API 로직을 구성하는 방법을 제공합니다. ViewSet에서 사용하는 주요 메서드 중 두 가지인 create와 perform_create에는 명확한 차이가 있습니다.
+
+ * create는 POST 요청이 들어왔을 때 데이터를 생성하는 뷰의 로직입니다. request 객체를 받아 해당 데이터를 이용해 새로운 인스턴스를 생성하고, 응답을 리턴하는 로직을 포함합니다. create 메서드는 API 요청에">
     <meta property="og:url" content="https://blog.midagedev.com/django-preform-create/">
     <meta property="article:published_time" content="2023-07-18T13:11:40.000Z">
-    <meta property="article:modified_time" content="2023-07-18T13:11:40.000Z">
+    <meta property="article:modified_time" content="2023-08-25T03:42:22.000Z">
     <meta property="article:publisher" content="https://www.facebook.com/ghost">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="django viewset에서 create와 perform_create의 차이">
-    <meta name="twitter:description" content="Django REST Framework에서 ViewSet은 API 로직을 구성하는 방법을 제공합니다. ViewSet에서 사용하는 주요 메서드 중 두 가지인 create와 perform_create에는 명확한 차이가 있습니다.
+    <meta name="twitter:description" content="chatgpt와의 대화입니다.
 
- * create는 POST 요청이 들어왔을 때 데이터를 생성하는 뷰의 로직입니다. request 객체를 받아 해당 데이터를 이용해 새로운 인스턴스를 생성하고, 응답을 리턴하는 로직을 포함합니다. create 메서드는 API 요청에 대한 전체적인">
+Django REST Framework에서 ViewSet은 API 로직을 구성하는 방법을 제공합니다. ViewSet에서 사용하는 주요 메서드 중 두 가지인 create와 perform_create에는 명확한 차이가 있습니다.
+
+ * create는 POST 요청이 들어왔을 때 데이터를 생성하는 뷰의 로직입니다. request 객체를 받아 해당 데이터를 이용해 새로운 인스턴스를 생성하고, 응답을 리턴하는 로직을 포함합니다. create 메서드는 API 요청에">
     <meta name="twitter:url" content="https://blog.midagedev.com/django-preform-create/">
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="kim hyeoncheol">
@@ -61,8 +65,8 @@
     "headline": "django viewset에서 create와 perform_create의 차이",
     "url": "https://blog.midagedev.com/django-preform-create/",
     "datePublished": "2023-07-18T13:11:40.000Z",
-    "dateModified": "2023-07-18T13:11:40.000Z",
-    "description": "Django REST Framework에서 ViewSet은 API 로직을 구성하는 방법을 제공합니다. ViewSet에서 사용하는 주요 메서드 중 두 가지인 create와 perform_create에는 명확한 차이가 있습니다.\n\n * create는 POST 요청이 들어왔을 때 데이터를 생성하는 뷰의 로직입니다. request 객체를 받아 해당 데이터를 이용해 새로운 인스턴스를 생성하고, 응답을 리턴하는 로직을 포함합니다. create 메서드는 API 요청에 대한 전체적인 흐름을 담당합니다.\n * 반면, perform_create는 create가 진행되는 과정 중, 실제로 새로운 데이터를 데이터베이스에 저장하는 역할을 합니다. perform_create 메서드에는 직접적으로 request 객체를 넘겨받지 않고, create로부터 전달받은 serializer와 validated_data를 이용해 데이터를 저장합니다.\n\n즉, create 메서드가 전체적인 생성 흐름을 담당하는 반면, per",
+    "dateModified": "2023-08-25T03:42:22.000Z",
+    "description": "chatgpt와의 대화입니다.\n\nDjango REST Framework에서 ViewSet은 API 로직을 구성하는 방법을 제공합니다. ViewSet에서 사용하는 주요 메서드 중 두 가지인 create와 perform_create에는 명확한 차이가 있습니다.\n\n * create는 POST 요청이 들어왔을 때 데이터를 생성하는 뷰의 로직입니다. request 객체를 받아 해당 데이터를 이용해 새로운 인스턴스를 생성하고, 응답을 리턴하는 로직을 포함합니다. create 메서드는 API 요청에 대한 전체적인 흐름을 담당합니다.\n * 반면, perform_create는 create가 진행되는 과정 중, 실제로 새로운 데이터를 데이터베이스에 저장하는 역할을 합니다. perform_create 메서드에는 직접적으로 request 객체를 넘겨받지 않고, create로부터 전달받은 serializer와 validated_data를 이용해 데이터를 저장합니다.\n\n즉, create 메서드가 전체적인 생",
     "mainEntityOfPage": "https://blog.midagedev.com/django-preform-create/"
 }
     </script>
@@ -145,7 +149,7 @@
                             </header>
 
             <section class="gh-content gh-canvas">
-                <p><code>Django REST Framework</code>에서 <code>ViewSet</code>은 API 로직을 구성하는 방법을 제공합니다. <code>ViewSet</code>에서 사용하는 주요 메서드 중 두 가지인 <code>create</code>와 <code>perform_create</code>에는 명확한 차이가 있습니다.</p><ul><li><code>create</code>는 <code>POST</code> 요청이 들어왔을 때 데이터를 생성하는 뷰의 로직입니다. <code>request</code> 객체를 받아 해당 데이터를 이용해 새로운 인스턴스를 생성하고, 응답을 리턴하는 로직을 포함합니다. <code>create</code> 메서드는 API 요청에 대한 전체적인 흐름을 담당합니다.</li><li>반면, <code>perform_create</code>는 <code>create</code>가 진행되는 과정 중, 실제로 새로운 데이터를 데이터베이스에 저장하는 역할을 합니다. <code>perform_create</code> 메서드에는 직접적으로 <code>request</code> 객체를 넘겨받지 않고, <code>create</code>로부터 전달받은 serializer와 <code>validated_data</code>를 이용해 데이터를 저장합니다.</li></ul><p>즉, <code>create</code> 메서드가 전체적인 생성 흐름을 담당하는 반면, <code>perform_create</code>는 그 과정 중 데이터 저장에 집중하는 역할을 합니다.</p><p>이러한 구조는 코드의 모듈화와 재사용성을 향상시키며, 필요에 따라 <code>perform_create</code>를 오버라이드하면 <code>create</code> 메서드의 흐름은 그대로 유지하면서 데이터 저장 방식만을 변경하는 등의 유연한 커스터마이징을 가능하게 합니다.</p><pre><code class="language-python">from rest_framework import viewsets, status
+                <p>chatgpt와의 대화입니다.</p><p><code>Django REST Framework</code>에서 <code>ViewSet</code>은 API 로직을 구성하는 방법을 제공합니다. <code>ViewSet</code>에서 사용하는 주요 메서드 중 두 가지인 <code>create</code>와 <code>perform_create</code>에는 명확한 차이가 있습니다.</p><ul><li><code>create</code>는 <code>POST</code> 요청이 들어왔을 때 데이터를 생성하는 뷰의 로직입니다. <code>request</code> 객체를 받아 해당 데이터를 이용해 새로운 인스턴스를 생성하고, 응답을 리턴하는 로직을 포함합니다. <code>create</code> 메서드는 API 요청에 대한 전체적인 흐름을 담당합니다.</li><li>반면, <code>perform_create</code>는 <code>create</code>가 진행되는 과정 중, 실제로 새로운 데이터를 데이터베이스에 저장하는 역할을 합니다. <code>perform_create</code> 메서드에는 직접적으로 <code>request</code> 객체를 넘겨받지 않고, <code>create</code>로부터 전달받은 serializer와 <code>validated_data</code>를 이용해 데이터를 저장합니다.</li></ul><p>즉, <code>create</code> 메서드가 전체적인 생성 흐름을 담당하는 반면, <code>perform_create</code>는 그 과정 중 데이터 저장에 집중하는 역할을 합니다.</p><p>이러한 구조는 코드의 모듈화와 재사용성을 향상시키며, 필요에 따라 <code>perform_create</code>를 오버라이드하면 <code>create</code> 메서드의 흐름은 그대로 유지하면서 데이터 저장 방식만을 변경하는 등의 유연한 커스터마이징을 가능하게 합니다.</p><pre><code class="language-python">from rest_framework import viewsets, status
 from rest_framework.response import Response
 from .serializers import YourModelSerializer
 from .models import YourModel
